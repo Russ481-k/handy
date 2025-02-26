@@ -20,8 +20,7 @@ const initI18next = async (lng: string, ns: string) => {
 
 export async function useTranslation(
   lng: string,
-  ns: keyof CustomTypeOptions["resources"] = "common",
-  options: { keyPrefix?: string } = {}
+  ns: keyof CustomTypeOptions["resources"] = "common"
 ) {
   const i18nextInstance = await initI18next(lng, ns);
   return {

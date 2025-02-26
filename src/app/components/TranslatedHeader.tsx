@@ -1,17 +1,14 @@
 "use client";
 
 import { useTranslation } from "../i18n/client";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IoLogoGithub } from "react-icons/io5";
-import LanguageSwitch from "./LanguageSwitch";
-import ThemeSwitch from "./ThemeSwitch";
+
 import styles from "./Header.module.scss";
 
 export default function TranslatedHeader({ lng }: { lng: string }) {
   const pathname = usePathname();
-  const router = useRouter();
   const { t } = useTranslation(lng, "common");
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -61,7 +58,7 @@ export default function TranslatedHeader({ lng }: { lng: string }) {
     >
       <div className={styles.container}>
         <Link href={`/${lng}`} className={styles.logo}>
-          LOGO
+          Handy
         </Link>
         <nav className={styles.nav}>
           {navigation.map((item) => (

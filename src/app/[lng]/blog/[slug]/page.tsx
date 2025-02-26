@@ -21,7 +21,7 @@ export default function BlogDetailPage({
 }: {
   params: Promise<{ lng: string; slug: string }>;
 }) {
-  const { lng, slug } = use(params);
+  const { lng } = use(params);
   const { t } = useTranslation(lng, "common");
   const [post, setPost] = useState<BlogPost | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);

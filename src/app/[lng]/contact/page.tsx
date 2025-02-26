@@ -42,6 +42,7 @@ export default function ContactPage({
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       setStatus("error");
+      console.error(error);
     }
   };
 

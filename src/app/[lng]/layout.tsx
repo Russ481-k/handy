@@ -10,15 +10,10 @@ export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ lng: string }>;
-}) {
-  const { lng } = await params;
+export async function generateMetadata() {
   return {
-    title: "Your Company",
-    description: "Your company description",
+    title: "Handy",
+    description: "Handy - Innovation for Everyone",
   };
 }
 

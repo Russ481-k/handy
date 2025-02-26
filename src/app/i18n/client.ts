@@ -21,7 +21,7 @@ i18next
   .init(getOptions());
 
 type RecursiveKeyOf<TObj extends object> = {
-  [TKey in keyof TObj & (string | number)]: TObj[TKey] extends any[]
+  [TKey in keyof TObj & (string | number)]: TObj[TKey] extends []
     ? `${TKey}` | `${TKey}.${number}` | `${TKey}.${number}.${string}`
     : TObj[TKey] extends object
     ? `${TKey}` | `${TKey}.${RecursiveKeyOf<TObj[TKey]>}`
