@@ -4,32 +4,42 @@
   left: 0;
   right: 0;
   height: 64px;
-  background: var(--card-background);
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s ease;
   z-index: 1000;
+  transition: all 0.3s ease;
 
   &.scrolled {
-    border-bottom-color: var(--border-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 2rem;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
-
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  color: var(--text-color);
+  text-decoration: none;
+  z-index: 1001;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  align-items: center;
+  line-height: 0.5;
 }
 
 .nav {
@@ -38,10 +48,8 @@
 
   a {
     color: var(--text-color);
-    font-size: 0.875rem;
+    text-decoration: none;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     transition: color 0.2s ease;
 
     &:hover {
@@ -50,7 +58,6 @@
 
     &.active {
       color: var(--primary-color);
-      font-weight: 600;
     }
   }
 }
@@ -71,7 +78,31 @@
 }
 
 @media (max-width: 768px) {
+  .menuButton {
+    display: block;
+  }
+
   .nav {
-    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--card-background);
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .menuOpen {
+    .nav {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
   }
 } 
