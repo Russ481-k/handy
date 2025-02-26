@@ -4,6 +4,7 @@ import TranslatedHeader from "../components/TranslatedHeader";
 import FloatingButtons from "../components/FloatingButtons";
 import "../styles/globals.scss";
 import Footer from "../components/Footer";
+import { Providers } from "../providers";
 
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
@@ -33,10 +34,12 @@ export default async function RootLayout({
   return (
     <html lang={lng} dir={dir(lng)}>
       <body>
-        <TranslatedHeader lng={lng} />
-        {children}
-        <FloatingButtons />
-        <Footer />
+        <Providers>
+          <TranslatedHeader lng={lng} />
+          {children}
+          <FloatingButtons />
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
