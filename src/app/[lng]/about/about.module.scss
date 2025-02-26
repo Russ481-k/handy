@@ -1,0 +1,202 @@
+.main {
+  min-height: 100vh;
+}
+
+.hero {
+  height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 2rem;
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+.history {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--border-color);
+  }
+}
+
+.timelineItem {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 4rem;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .year {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+  }
+
+  .content {
+    width: 45%;
+    padding: 2rem;
+    background: var(--card-background);
+    border: 1px solid var(--border-color);
+    margin-top: 3rem;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    p {
+      line-height: 1.6;
+      color: var(--text-color);
+    }
+
+    &:nth-child(odd) {
+      margin-right: 55%;
+    }
+
+    &:nth-child(even) {
+      margin-left: 55%;
+    }
+  }
+}
+
+.values {
+  padding: 6rem 2rem;
+  background: var(--card-background);
+  border-top: 1px solid var(--border-color);
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+.valueGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.valueCard {
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+
+    svg {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  p {
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  .timeline {
+    &::before {
+      left: 2rem;
+    }
+  }
+
+  .timelineItem {
+    .year {
+      left: 2rem;
+    }
+
+    .content {
+      width: calc(100% - 4rem);
+      margin-left: 4rem !important;
+      margin-right: 0 !important;
+    }
+  }
+
+  .valueGrid {
+    grid-template-columns: 1fr;
+  }
+} 

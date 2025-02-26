@@ -1,0 +1,52 @@
+.languageSwitch {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 2rem;
+  background: transparent;
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+  min-width: 4rem;
+  text-align: center;
+
+  &:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  // Add a subtle animation when language changes
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid var(--primary-color);
+    border-radius: 2rem;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:focus-visible {
+    outline: none;
+    &::after {
+      opacity: 0.5;
+    }
+  }
+
+  @media (max-width: 768px) {
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+} 

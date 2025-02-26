@@ -1,0 +1,228 @@
+{
+  "hero": {
+    "title": "Creating the Future with Innovative Technology",
+    "description": "We solve customer problems using the latest technology"
+  },
+  "features": {
+    "title": "Key Features",
+    "items": {
+      "innovation": {
+        "title": "Innovative Technology",
+        "description": "Providing future-oriented solutions using the latest technology"
+      },
+      "customer": {
+        "title": "Customer Centric",
+        "description": "Providing optimal service with customer needs as our top priority"
+      },
+      "growth": {
+        "title": "Rapid Growth",
+        "description": "Growing rapidly through continuous innovation and improvement"
+      }
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "mission": {
+      "title": "Mission",
+      "description": "Creating a better world through innovative technology"
+    },
+    "vision": {
+      "title": "Vision",
+      "description": "Becoming a leading global technology company by 2030"
+    },
+    "team": {
+      "title": "Our Team"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "footer": {
+    "company": "Company",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "© 2024 Your Company. All rights reserved.",
+    "slogan": "Building the future with innovative technology"
+  },
+  "about_page": {
+    "title": "We Pursue Innovation",
+    "subtitle": "Creating a Better World Through Technology",
+    "history": {
+      "title": "Our Journey",
+      "items": [
+        {
+          "year": "2020",
+          "title": "Beginning",
+          "description": "Founded to provide innovative technology solutions"
+        },
+        {
+          "year": "2021",
+          "title": "Growth",
+          "description": "Rapid growth through partnerships with major companies"
+        },
+        {
+          "year": "2022",
+          "title": "Innovation",
+          "description": "Started leading the market with AI-based solutions"
+        },
+        {
+          "year": "2023",
+          "title": "Expansion",
+          "description": "Began global market expansion"
+        }
+      ]
+    },
+    "values": {
+      "title": "Core Values",
+      "items": [
+        {
+          "title": "Innovation",
+          "description": "Creating the future through continuous challenge and innovation"
+        },
+        {
+          "title": "Trust",
+          "description": "Prioritizing trust with our customers"
+        },
+        {
+          "title": "Collaboration",
+          "description": "Pursuing partnerships for mutual growth"
+        }
+      ]
+    }
+  },
+  "projects_page": {
+    "title": "Projects",
+    "subtitle": "Solutions Created with Innovative Technology",
+    "categories": {
+      "all": "All",
+      "web": "Web",
+      "mobile": "Mobile",
+      "ai": "AI"
+    },
+    "items": [
+      {
+        "title": "AI-based Analytics Platform",
+        "description": "Real-time analytics solution using big data",
+        "category": "ai",
+        "image": "/projects/ai-platform.jpg",
+        "tags": ["AI", "Big Data", "React", "Python"]
+      },
+      {
+        "title": "Smart Commerce Platform",
+        "description": "AI-powered personalized shopping experience",
+        "category": "web",
+        "image": "/projects/commerce.jpg",
+        "tags": ["Next.js", "Node.js", "AWS"]
+      },
+      {
+        "title": "Healthcare Mobile App",
+        "description": "Personalized health management solution",
+        "category": "mobile",
+        "image": "/projects/healthcare.jpg",
+        "tags": ["React Native", "Firebase", "iOS", "Android"]
+      },
+      {
+        "title": "Real-time Collaboration Tool",
+        "description": "Real-time project management solution for teams",
+        "category": "web",
+        "image": "/projects/collaboration.jpg",
+        "tags": ["Vue.js", "WebSocket", "MongoDB"]
+      }
+    ]
+  },
+  "contact_page": {
+    "title": "Contact Us",
+    "subtitle": "Want to talk about a project or collaboration?",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message",
+      "success": "Your message has been sent successfully.",
+      "error": "Failed to send message. Please try again."
+    },
+    "contact_info": {
+      "title": "Contact Information",
+      "address": {
+        "title": "Address",
+        "value": "123 Teheran-ro, Gangnam-gu, Seoul"
+      },
+      "email": {
+        "title": "Email",
+        "value": "contact@company.com"
+      },
+      "phone": {
+        "title": "Phone",
+        "value": "+82-2-1234-5678"
+      }
+    }
+  },
+  "blog_page": {
+    "title": "Tech Blog",
+    "subtitle": "Sharing the latest tech trends and development stories",
+    "categories": {
+      "all": "All",
+      "development": "Development",
+      "technology": "Technology",
+      "design": "Design",
+      "culture": "Culture"
+    },
+    "posts": [
+      {
+        "title": "Modern Web Development with Next.js 13",
+        "description": "Introducing web development methods using Next.js 13's new features and App Router.",
+        "category": "development",
+        "author": "John Dev",
+        "date": "2024-03-15",
+        "readTime": "5 min",
+        "thumbnail": "/blog/nextjs.jpg",
+        "tags": ["Next.js", "React", "Web Development"]
+      },
+      {
+        "title": "UX Design in the AI Era",
+        "description": "Exploring changes and trends in user experience design in the age of artificial intelligence.",
+        "category": "design",
+        "author": "Sarah Design",
+        "date": "2024-03-10",
+        "readTime": "4 min",
+        "thumbnail": "/blog/ux-design.jpg",
+        "tags": ["UX", "AI", "Design"]
+      },
+      {
+        "title": "Adopting Microservices Architecture",
+        "description": "Sharing the journey and experience of transitioning from monolithic to microservices.",
+        "category": "technology",
+        "author": "Mike Arch",
+        "date": "2024-03-05",
+        "readTime": "7 min",
+        "thumbnail": "/blog/microservices.jpg",
+        "tags": ["MSA", "Architecture", "Cloud"]
+      },
+      {
+        "title": "Developer Growth and Learning",
+        "description": "Sharing effective learning methods and experiences for continuous growth.",
+        "category": "culture",
+        "author": "Tom Learning",
+        "date": "2024-03-01",
+        "readTime": "6 min",
+        "thumbnail": "/blog/learning.jpg",
+        "tags": ["Learning", "Career", "Growth"]
+      }
+    ]
+  },
+  "blog_detail": {
+    "back_to_blog": "Back to Blog",
+    "published_on": "Published on",
+    "read_time": "Read time",
+    "author": "Author",
+    "share": "Share",
+    "related_posts": "Related Posts",
+    "tags": "Tags"
+  }
+} 
