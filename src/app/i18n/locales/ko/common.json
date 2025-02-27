@@ -225,5 +225,49 @@
     "share": "공유하기",
     "related_posts": "관련 글",
     "tags": "태그"
+  },
+  "legal_page": {
+    "title": "법적 고지",
+    "subtitle": "당사의 법적 정보와 규정을 확인하세요",
+    "company_info": {
+      "title": "회사 정보",
+      "content": "회사의 법적 정보 내용..."
+    },
+    "disclaimer": {
+      "title": "면책 조항",
+      "content": "면책 조항 내용..."
+    }
+  },
+  "privacy_page": {
+    "title": "개인정보처리방침",
+    "subtitle": "귀하의 개인정보 보호를 위한 당사의 정책입니다",
+    "data_collection": {
+      "title": "개인정보 수집",
+      "content": "개인정보 수집에 대한 내용..."
+    },
+    "data_usage": {
+      "title": "개인정보 이용",
+      "content": "개인정보 이용에 대한 내용..."
+    },
+    "cookies": {
+      "title": "쿠키 정책",
+      "content": "쿠키 사용에 대한 내용..."
+    }
+  },
+  "terms_page": {
+    "title": "이용약관",
+    "subtitle": "서비스 이용에 대한 약관입니다",
+    "usage": {
+      "title": "서비스 이용",
+      "content": "서비스 이용에 대한 내용..."
+    },
+    "restrictions": {
+      "title": "제한 사항",
+      "content": "제한 사항에 대한 내용..."
+    },
+    "termination": {
+      "title": "계약 종료",
+      "content": "계약 종료에 대한 내용..."
+    }
   }
 } 

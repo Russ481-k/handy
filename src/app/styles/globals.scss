@@ -62,6 +62,40 @@
     color-mix(in srgb, var(--primary-color), var(--accent-color)),
     var(--accent-color)
   );
+
+  // Legal pages gradients
+  --gradient-legal: conic-gradient(
+    from 270deg at 50% 50%,
+    color-mix(in srgb, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, transparent)
+  );
+
+  --gradient-privacy: conic-gradient(
+    from 315deg at 50% 50%,
+    color-mix(in srgb, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, transparent)
+  );
+
+  --gradient-terms: conic-gradient(
+    from 360deg at 50% 50%,
+    color-mix(in srgb, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, transparent)
+  );
 }
 
 [data-theme="light"] {

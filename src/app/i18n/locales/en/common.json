@@ -225,5 +225,49 @@
     "share": "Share",
     "related_posts": "Related Posts",
     "tags": "Tags"
+  },
+  "legal_page": {
+    "title": "Legal Notice",
+    "subtitle": "Review our legal information and regulations",
+    "company_info": {
+      "title": "Company Information",
+      "content": "Legal information about our company..."
+    },
+    "disclaimer": {
+      "title": "Disclaimer",
+      "content": "Content of the disclaimer..."
+    }
+  },
+  "privacy_page": {
+    "title": "Privacy Policy",
+    "subtitle": "Our policy for protecting your personal information",
+    "data_collection": {
+      "title": "Data Collection",
+      "content": "Information about data collection..."
+    },
+    "data_usage": {
+      "title": "Data Usage",
+      "content": "Information about data usage..."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "content": "Information about cookie usage..."
+    }
+  },
+  "terms_page": {
+    "title": "Terms of Service",
+    "subtitle": "Terms and conditions for using our service",
+    "usage": {
+      "title": "Service Usage",
+      "content": "Information about service usage..."
+    },
+    "restrictions": {
+      "title": "Restrictions",
+      "content": "Information about restrictions..."
+    },
+    "termination": {
+      "title": "Termination",
+      "content": "Information about contract termination..."
+    }
   }
 } 

@@ -155,6 +155,50 @@ interface CommonResources {
       };
     };
   };
+  legal_page: {
+    title: string;
+    subtitle: string;
+    company_info: {
+      title: string;
+      content: string;
+    };
+    disclaimer: {
+      title: string;
+      content: string;
+    };
+  };
+  privacy_page: {
+    title: string;
+    subtitle: string;
+    data_collection: {
+      title: string;
+      content: string;
+    };
+    data_usage: {
+      title: string;
+      content: string;
+    };
+    cookies: {
+      title: string;
+      content: string;
+    };
+  };
+  terms_page: {
+    title: string;
+    subtitle: string;
+    usage: {
+      title: string;
+      content: string;
+    };
+    restrictions: {
+      title: string;
+      content: string;
+    };
+    termination: {
+      title: string;
+      content: string;
+    };
+  };
 }
 
 declare module "i18next" {
