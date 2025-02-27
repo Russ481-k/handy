@@ -1,7 +1,8 @@
 .footer {
-  background: var(--card-background);
+  background-color: var(--card-background);
   border-top: 1px solid var(--border-color);
   padding: 4rem 0 2rem;
+  color: var(--text-color);
 }
 
 .container {
@@ -34,6 +35,13 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+
+  a {
+    color: var(--text-color);
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
 }
 
 .section {
@@ -86,6 +94,10 @@
       opacity: 1;
     }
   }
+}
+
+.copyright {
+  color: var(--muted-color);
 }
 
 @media (max-width: 768px) {

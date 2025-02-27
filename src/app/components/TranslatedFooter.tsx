@@ -16,7 +16,7 @@ export default function TranslatedFooter() {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.brand}>
-            <h3>LOGO</h3>
+            <h3>{t("footer.brand")}</h3>
             <p>{t("footer.slogan")}</p>
           </div>
           <div className={styles.links}>

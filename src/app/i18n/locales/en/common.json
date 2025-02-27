@@ -42,11 +42,12 @@
     "contact": "Contact"
   },
   "footer": {
+    "brand": "Handy",
     "company": "Company",
     "legal": "Legal",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
-    "copyright": "© 2024 Your Company. All rights reserved.",
+    "copyright": "© 2024 Handy. All rights reserved.",
     "slogan": "Building the future with innovative technology"
   },
   "about_page": {

@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: var(--gradient-contact);
   color: white;
   padding: 2rem;
 
@@ -18,7 +18,8 @@
     font-weight: 700;
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
-  }
+    color: white;
+}
 
   p {
     font-size: 1.25rem;

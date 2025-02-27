@@ -3,9 +3,9 @@
   top: 1rem;
   right: 1rem;
   padding: 0.5rem 1rem;
-  border: 2px solid var(--primary-color);
+  border: 1px solid var(--border-color);
   border-radius: 2rem;
-  background: transparent;
+  background-color: var(--card-background);
   color: var(--text-color);
   font-weight: 600;
   font-size: 0.875rem;
@@ -16,13 +16,13 @@
   text-align: center;
 
   &:hover {
-    background: var(--primary-color);
+    background-color: var(--primary-color);
     color: white;
-    transform: translateY(-2px);
   }
 
-  &:active {
-    transform: translateY(0);
+  &.active {
+    background-color: var(--primary-color);
+    color: white;
   }
 
   // Add a subtle animation when language changes

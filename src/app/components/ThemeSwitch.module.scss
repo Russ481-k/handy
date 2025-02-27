@@ -51,4 +51,15 @@
     height: 2.2rem;
     font-size: 0.875rem;
   }
+}
+
+.switch {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+
+  &:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
 } 

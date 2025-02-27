@@ -67,4 +67,17 @@
     height: 2.5rem;
     font-size: 1rem;
   }
+}
+
+.container {
+  button {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    
+    &:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+  }
 } 

@@ -4,9 +4,16 @@
 
 .hero {
   padding: 6rem 2rem;
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: var(--gradient-blog);
   color: white;
-
+  
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;  
+    color: white;
+  }
   .heroContent {
     max-width: 800px;
     margin: 0 auto;

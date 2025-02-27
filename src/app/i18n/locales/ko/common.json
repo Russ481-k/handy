@@ -42,11 +42,12 @@
     "contact": "문의"
   },
   "footer": {
+    "brand": "Handy",
     "company": "회사",
     "legal": "법적 고지",
     "privacyPolicy": "개인정보처리방침",
     "termsOfService": "이용약관",
-    "copyright": "© 2024 Your Company. All rights reserved.",
+    "copyright": "© 2024 Handy. All rights reserved.",
     "slogan": "혁신적인 기술로 미래를 만들어갑니다"
   },
   "about_page": {

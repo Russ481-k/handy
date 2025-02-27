@@ -18,6 +18,7 @@ interface CommonResources {
     contact: string;
   };
   footer: {
+    brand: string;
     company: string;
     legal: string;
     privacyPolicy: string;

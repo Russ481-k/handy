@@ -1,71 +1,172 @@
 :root {
-  --primary-color: #0070f3;
-  --secondary-color: #00a8e8;
-  --background-color: #ffffff;
-  --card-background-rgb: 255, 255, 255;
-  --text-color: #333333;
-  --card-background: #ffffff;
-  --card-shadow: rgba(0, 0, 0, 0.05);
-  --border-color: #eaeaea;
-  --header-background: rgba(255, 255, 255, 0.9);
-  --header-blur: 1px;
-  padding-top: 64px; // Header height
-
-  // Light mode colors
-  --primary-light: #00838f;    // 청록색 메인
-  --secondary-light: #006064;  // 진한 청록색
-  --accent-light: #00acc1;     // 밝은 청록색
-  --muted-light: #78909c;      // 회청색
-
-  // Dark mode colors
-  --primary-dark: #ff1493;     // 핫핑크
-  --secondary-dark: #4a148c;   // 딥 퍼플
-  --accent-dark: #ff69b4;      // 밝은 핑크
-  --muted-dark: #9e9e9e;       // 회색
-
   // System colors
   --success: #00c853;
   --warning: #ffd600;
   --error: #ff1744;
   --info: #00b0ff;
 
-  // Light mode theme
-  [data-theme="light"] {
-    --primary-color: var(--primary-light);
-    --secondary-color: var(--secondary-light);
-    --accent-color: var(--accent-light);
-    --muted-color: var(--muted-light);
-    
-    --text-color: #2c3e50;
-    --background-color: #ffffff;
-    --card-background: #ffffff;
-    --border-color: #e0e0e0;
-    
-    --card-background-rgb: 255, 255, 255;
-    --primary-color-rgb: 0, 131, 143;
-    --header-background: rgba(255, 255, 255, 0.9);
-    --header-blur: 1px;
-  }
+  padding-top: 64px; // Header height
 
-  // Dark mode theme
-  [data-theme="dark"] {
-    --primary-color: var(--primary-dark);
-    --secondary-color: var(--secondary-dark);
-    --accent-color: var(--accent-dark);
-    --muted-color: var(--muted-dark);
-    
-    --text-color: #e0e0e0;
-    --background-color: #121212;
-    --card-background: #1e1e1e;
-    --border-color: #333333;
-    
-    --card-background-rgb: 30, 30, 30;
-    --primary-color-rgb: 255, 20, 147;
-    --header-background: rgba(18, 18, 18, 0.9);
-    --header-blur: 10px;
-  }
+  // Smooth conic gradients with continuous blending
+  --gradient-home: conic-gradient(
+    from 45deg at 50% 50%,
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color), var(--secondary-color)),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color), var(--accent-color)),
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color), var(--primary-color)),
+    var(--primary-color)
+  );
+
+  --gradient-about: conic-gradient(
+    from 90deg at 50% 50%,
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color), var(--primary-color)),
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color), var(--secondary-color)),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color), var(--accent-color)),
+    var(--accent-color)
+  );
+
+  --gradient-projects: conic-gradient(
+    from 135deg at 50% 50%,
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color), var(--accent-color)),
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color), var(--primary-color)),
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color), var(--secondary-color)),
+    var(--secondary-color)
+  );
+
+  --gradient-blog: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color), var(--accent-color)),
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color), var(--secondary-color)),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color), var(--primary-color)),
+    var(--primary-color)
+  );
+
+  --gradient-contact: conic-gradient(
+    from 225deg at 50% 50%,
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color), var(--secondary-color)),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color), var(--primary-color)),
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color), var(--accent-color)),
+    var(--accent-color)
+  );
 }
 
+[data-theme="light"] {
+  // Light mode colors
+  --primary-color: #3674B5;    // 주조색 - 깊은 청색
+  --secondary-color: #578FCA;  // 보조색 - 중간 청색
+  --accent-color: #A1E3F9;     // 강조색 - 밝은 하늘색
+  --muted-color: #D1F8EF;      // 비활성색 - 연한 민트색
+  
+  --text-color: #2c3e50;
+  --background-color: #ffffff;
+  --card-background: #ffffff;
+  --border-color: #e0e0e0;
+  
+  --card-background-rgb: 255, 255, 255;
+  --primary-color-rgb: 54, 116, 181;    // #3674B5
+  --header-background: rgba(255, 255, 255, 0.9);
+  --header-blur: 1px;
+  --gradient: var(--gradient-home); // 기본 그라데이션
+}
+
+[data-theme="dark"] {
+  // Dark mode colors
+  --primary-color: #c01978;     // 주조색 - 진한 보라
+  --secondary-color: #610C9F;   // 보조색 - 진한 자주
+  --accent-color: #940B92;      // 강조색 - 선명한 핑크
+  --muted-color: #E95793;       // 비활성색 - 연한 핑크
+  
+  --text-color: #e0e0e0;
+  --background-color: #121212;
+  --card-background: #1e1e1e;
+  --border-color: #333333;
+  
+  --card-background-rgb: 30, 30, 30;
+  --primary-color-rgb: 97, 12, 159;    // #610C9F
+  --header-background: rgba(18, 18, 18, 0.9);
+  --header-blur: 10px;
+  // Dark mode conic gradients
+  --gradient-home: conic-gradient(
+    from 45deg at 50% 50%,
+    var(--primary-color) 0deg,
+    var(--primary-color) 60deg,
+    color-mix(in srgb, var(--primary-color) 75%, var(--secondary-color) 25%) 90deg,
+    color-mix(in srgb, var(--primary-color) 25%, var(--secondary-color) 75%) 120deg,
+    var(--secondary-color) 150deg,
+    var(--secondary-color) 180deg,
+    color-mix(in srgb, var(--secondary-color) 75%, var(--accent-color) 25%) 210deg,
+    color-mix(in srgb, var(--secondary-color) 25%, var(--accent-color) 75%) 240deg,
+    var(--accent-color) 270deg,
+    var(--accent-color) 300deg,
+    color-mix(in srgb, var(--accent-color) 75%, var(--primary-color) 25%) 330deg,
+    color-mix(in srgb, var(--accent-color) 25%, var(--primary-color) 75%) 360deg
+  );
+
+  --gradient-about: conic-gradient(
+    from 90deg at 50% 50%,
+    var(--accent-color) 0deg,
+    var(--accent-color) 60deg,
+    color-mix(in srgb, var(--accent-color) 75%, var(--primary-color) 25%) 90deg,
+    color-mix(in srgb, var(--accent-color) 25%, var(--primary-color) 75%) 120deg,
+    var(--primary-color) 150deg,
+    var(--primary-color) 180deg,
+    color-mix(in srgb, var(--primary-color) 75%, var(--secondary-color) 25%) 210deg,
+    color-mix(in srgb, var(--primary-color) 25%, var(--secondary-color) 75%) 240deg,
+    var(--secondary-color) 270deg,
+    var(--secondary-color) 300deg,
+    color-mix(in srgb, var(--secondary-color) 75%, var(--accent-color) 25%) 330deg,
+    color-mix(in srgb, var(--secondary-color) 25%, var(--accent-color) 75%) 360deg
+  );
+
+  --gradient-projects: conic-gradient(
+    from 135deg at 50% 50%,
+    var(--secondary-color) 0deg,
+    var(--secondary-color) 90deg,
+    var(--accent-color) 120deg,
+    var(--accent-color) 210deg,
+    var(--primary-color) 240deg,
+    var(--primary-color) 330deg,
+    var(--secondary-color) 360deg
+  );
+
+  --gradient-blog: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--primary-color) 0deg,
+    var(--primary-color) 90deg,
+    var(--accent-color) 120deg,
+    var(--accent-color) 210deg,
+    var(--secondary-color) 240deg,
+    var(--secondary-color) 330deg,
+    var(--primary-color) 360deg
+  );
+
+  --gradient-contact: conic-gradient(
+    from 225deg at 50% 50%,
+    var(--accent-color) 0deg,
+    var(--accent-color) 90deg,
+    var(--secondary-color) 120deg,
+    var(--secondary-color) 210deg,
+    var(--primary-color) 240deg,
+    var(--primary-color) 330deg,
+    var(--accent-color) 360deg
+  );
+}
+
+// Base styles
 html,
 body {
   max-width: 100vw;
@@ -86,18 +187,80 @@ body {
   margin: 0;
 }
 
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
+
+// Links
 a {
   color: var(--primary-color);
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  transition: color 0.2s ease;
+  
+  &:hover {
+    color: var(--accent-color);
   }
 }
 
-// Customize scrollbar
+// Buttons
+button {
+  transition: all 0.2s ease;
+  
+  &.primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: var(--accent-color);
+    }
+  }
+  
+  &.secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: var(--accent-color);
+    }
+  }
+  
+  &.muted {
+    background-color: var(--muted-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+// Cards
+.card {
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Scrollbar
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -115,56 +278,7 @@ a {
   }
 }
 
-// Firefox scrollbar
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--border-color) var(--background-color);
-}
-
-// Typography
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color);
-}
-
-// Links
-a {
-  &:hover {
-    color: var(--accent-color);
-  }
-}
-
-// Buttons
-button {
-  &.primary {
-    background-color: var(--primary-color);
-    color: white;
-    
-    &:hover {
-      background-color: var(--accent-color);
-    }
-  }
-  
-  &.secondary {
-    background-color: var(--secondary-color);
-    color: white;
-    
-    &:hover {
-      background-color: var(--accent-color);
-    }
-  }
-  
-  &.muted {
-    background-color: var(--muted-color);
-    color: white;
-    
-    &:hover {
-      opacity: 0.9;
-    }
-  }
-}
-
-// Cards
-.card {
-  background-color: var(--card-background);
-  border: 1px solid var(--border-color);
 }

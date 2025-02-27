@@ -20,7 +20,7 @@ export default function TranslatedHeader({ lng }: { lng: string }) {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setScrolled(scrollY > 0);
-      setScrollProgress(Math.min(scrollY / 300, 1));
+      setScrollProgress(Math.min(scrollY / 1280, 1));
     };
 
     window.addEventListener("scroll", handleScroll);
