@@ -85,8 +85,8 @@ export default function BlogPage({
                 <h2 className={styles.postTitle}>{post.title}</h2>
                 <p className={styles.postDescription}>{post.description}</p>
                 <div className={styles.tags}>
-                  {post.tags.map((tag, tagIndex) => (
-                    <span key={tagIndex} className={styles.tag}>
+                  {post.tags.map((tag) => (
+                    <span key={tag} className={styles.postTag}>
                       {tag}
                     </span>
                   ))}

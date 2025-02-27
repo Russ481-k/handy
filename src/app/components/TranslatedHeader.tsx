@@ -3,7 +3,7 @@
 import { useTranslation } from "../i18n/client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
 import styles from "./Header.module.scss";
 
@@ -15,17 +15,34 @@ export default function TranslatedHeader({ lng }: { lng: string }) {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const closeMenu = useCallback(() => {
+    setIsMenuOpen(false);
+  }, []);
+
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setScrolled(scrollY > 0);
       setScrollProgress(Math.min(scrollY / 1280, 1));
+      closeMenu(); // 스크롤 시 메뉴 닫기
+    };
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const header = document.querySelector(`.${styles.header}`);
+      if (header && !header.contains(event.target as Node)) {
+        closeMenu();
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [closeMenu]);
 
   const navigation = [
     { name: t("navigation.home"), href: `/${lng}` },
@@ -69,37 +86,40 @@ export default function TranslatedHeader({ lng }: { lng: string }) {
   }
 
   return (
-    <header
-      className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${
-        isMenuOpen ? styles.menuOpen : ""
-      }`}
-      style={{
-        backgroundColor: `rgba(var(--card-background-rgb), ${
-          1 - scrollProgress
-        })`,
-        backdropFilter: `blur(${scrollProgress * 10}px)`,
-      }}
-    >
-      <div className={styles.container}>
-        <Link href={`/${lng}`} className={styles.logo}>
-          Handy
-        </Link>
-        <button className={styles.menuButton} onClick={toggleMenu}>
-          {isMenuOpen ? <IoClose /> : <IoMenu className={styles.menuIcon} />}
-        </button>
-        <nav className={styles.nav}>
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={isActive(item.href) ? styles.active : ""}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-      </div>
-    </header>
+    <>
+      {isMenuOpen && <div className={styles.overlay} onClick={closeMenu} />}
+      <header
+        className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${
+          isMenuOpen ? styles.menuOpen : ""
+        }`}
+        style={{
+          backgroundColor: `rgba(var(--card-background-rgb), ${
+            isMenuOpen ? 1 : 1 - scrollProgress
+          })`,
+          backdropFilter: `blur(${scrollProgress * 10}px)`,
+        }}
+      >
+        <div className={styles.container}>
+          <Link href={`/${lng}`} className={styles.logo}>
+            Handy
+          </Link>
+          <button className={styles.menuButton} onClick={toggleMenu}>
+            {isMenuOpen ? <IoClose /> : <IoMenu className={styles.menuIcon} />}
+          </button>
+          <nav className={styles.nav}>
+            {navigation.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={isActive(item.href) ? styles.active : ""}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }

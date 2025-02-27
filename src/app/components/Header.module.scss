@@ -13,6 +13,26 @@
   &.scrolled {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
+
+  &.menuOpen {
+    .nav {
+      @media (max-width: 768px) {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+        background-color: #00000000;
+        backdrop-filter: blur(10px);
+
+        a {
+          font-weight: 600;
+          
+          &.active {
+            font-weight: 800;
+          }
+        }
+      }
+    }
+  }
 }
 
 .container {
@@ -71,6 +91,39 @@
       color: var(--primary-color);
     }
   }
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    bottom: 0;
+    width: 250px;
+    flex-direction: column;
+    padding: 2rem;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 99;
+    
+    a {
+      font-size: 1.25rem;
+      padding: 1rem 0;
+      width: 100%;
+      text-align: left;
+      color: white;
+      font-weight: 500;
+
+      &:hover {
+        color: var(--accent-color);
+      }
+
+      &.active {
+        color: var(--accent-color);
+        font-weight: 700;
+      }
+    }
+  }
 }
 
 .actions {
@@ -88,30 +141,25 @@
   }
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 98;
+}
+
 @media (max-width: 768px) {
   .menuButton {
     display: block;
   }
 
-  .nav {
-    position: absolute;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: var(--card-background);
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    gap: 1rem;
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-  }
-
   .menuOpen {
     .nav {
-      transform: translateY(0);
+      transform: translateX(0);
       opacity: 1;
       visibility: visible;
     }

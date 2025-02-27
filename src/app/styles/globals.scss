@@ -10,13 +10,13 @@
   // Smooth conic gradients with continuous blending
   --gradient-home: conic-gradient(
     from 45deg at 50% 50%,
-    var(--primary-color),
-    color-mix(in srgb, var(--primary-color), var(--secondary-color)),
-    var(--secondary-color),
-    color-mix(in srgb, var(--secondary-color), var(--accent-color)),
-    var(--accent-color),
-    color-mix(in srgb, var(--accent-color), var(--primary-color)),
-    var(--primary-color)
+    color-mix(in srgb, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, transparent)
   );
 
   --gradient-about: conic-gradient(
@@ -65,11 +65,11 @@
 }
 
 [data-theme="light"] {
-  // Light mode colors
-  --primary-color: #3674B5;    // 주조색 - 깊은 청색
-  --secondary-color: #578FCA;  // 보조색 - 중간 청색
-  --accent-color: #A1E3F9;     // 강조색 - 밝은 하늘색
-  --muted-color: #D1F8EF;      // 비활성색 - 연한 민트색
+  // Light mode colors - 채도를 낮춘 버전
+  --primary-color: #5885B0;    // 더 부드러운 청색
+  --secondary-color: #79A2C7;  // 더 부드러운 중간 청색
+  --accent-color: #B8E2F2;     // 더 부드러운 하늘색
+  --muted-color: #D8F2EC;      // 더 부드러운 민트색
   
   --text-color: #2c3e50;
   --background-color: #ffffff;
@@ -84,11 +84,11 @@
 }
 
 [data-theme="dark"] {
-  // Dark mode colors
-  --primary-color: #c01978;     // 주조색 - 진한 보라
-  --secondary-color: #610C9F;   // 보조색 - 진한 자주
-  --accent-color: #940B92;      // 강조색 - 선명한 핑크
-  --muted-color: #E95793;       // 비활성색 - 연한 핑크
+  // Dark mode colors - 채도를 낮춘 버전
+  --primary-color: #A84578;     // 더 부드러운 진한 핑크
+  --secondary-color: #6E4B8F;   // 더 부드러운 보라
+  --accent-color: #8B4B82;      // 더 부드러운 자주
+  --muted-color: #D27B9D;       // 더 부드러운 연한 핑크
   
   --text-color: #e0e0e0;
   --background-color: #121212;
@@ -102,18 +102,13 @@
   // Dark mode conic gradients
   --gradient-home: conic-gradient(
     from 45deg at 50% 50%,
-    var(--primary-color) 0deg,
-    var(--primary-color) 60deg,
-    color-mix(in srgb, var(--primary-color) 75%, var(--secondary-color) 25%) 90deg,
-    color-mix(in srgb, var(--primary-color) 25%, var(--secondary-color) 75%) 120deg,
-    var(--secondary-color) 150deg,
-    var(--secondary-color) 180deg,
-    color-mix(in srgb, var(--secondary-color) 75%, var(--accent-color) 25%) 210deg,
-    color-mix(in srgb, var(--secondary-color) 25%, var(--accent-color) 75%) 240deg,
-    var(--accent-color) 270deg,
-    var(--accent-color) 300deg,
-    color-mix(in srgb, var(--accent-color) 75%, var(--primary-color) 25%) 330deg,
-    color-mix(in srgb, var(--accent-color) 25%, var(--primary-color) 75%) 360deg
+    color-mix(in srgb, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, transparent),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, transparent),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
+    color-mix(in srgb, var(--primary-color) 85%, transparent)
   );
 
   --gradient-about: conic-gradient(
@@ -203,47 +198,59 @@ a {
   }
 }
 
-// Buttons
-button {
+// Common button styles
+.button-base {
+  border: none;
+  cursor: pointer;
   transition: all 0.2s ease;
-  
-  &.primary {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    
-    &:hover {
-      background-color: var(--accent-color);
-    }
+}
+
+.categoryButton {
+  @extend .button-base;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border-color);
+  background: var(--card-background);
+  color: var(--text-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  &:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
   }
-  
-  &.secondary {
-    background-color: var(--secondary-color);
+
+  &.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
     color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    
-    &:hover {
-      background-color: var(--accent-color);
-    }
   }
-  
-  &.muted {
-    background-color: var(--muted-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    
-    &:hover {
-      opacity: 0.9;
-    }
+}
+
+.submitButton {
+  @extend .button-base;
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-color);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+
+  &:hover {
+    background: var(--secondary-color);
+  }
+}
+
+.tag {
+  @extend .button-base;
+  padding: 0.25rem 0.75rem;
+  background: var(--primary-color);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1;
   }
 }
 
@@ -251,7 +258,6 @@ button {
 .card {
   background-color: var(--card-background);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
   padding: 1rem;
   transition: all 0.2s ease;
   
@@ -271,11 +277,6 @@ button {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
-  border-radius: 5px;
-  
-  &:hover {
-    background: var(--primary-color);
-  }
 }
 
 * {
