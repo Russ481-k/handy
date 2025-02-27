@@ -118,7 +118,7 @@
 }
 
 .submitButton {
-  composes: submitButton from global;
+  @extend :global(.submitButton) !optional;
 }
 
 .success,

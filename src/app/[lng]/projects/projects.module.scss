@@ -43,8 +43,25 @@
 }
 
 .categoryButton {
-  composes: categoryButton from global;
-}
+    @extend .button-base !optional;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--border-color);
+    background: var(--card-background);
+    color: var(--text-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+  
+    &:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+    }
+  
+    &.active {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+  }
 
 .grid {
   display: grid;
@@ -107,7 +124,7 @@
 }
 
 .tag {
-  composes: tag from global;
+  @extend :global(.tag) !optional;
 }
 
 @media (max-width: 768px) {

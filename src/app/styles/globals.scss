@@ -1,124 +1,136 @@
 :root {
-  // System colors
-  --success: #00c853;
-  --warning: #ffd600;
-  --error: #ff1744;
-  --info: #00b0ff;
-
+  --primary-color: #2563eb;    // 더 진한 파란색
+  --secondary-color: #7c3aed;  // 선명한 보라색
+  --accent-color: #0ea5e9;     // 밝은 하늘색
+  --muted-color: #64748b;      // 중간 톤의 회색
+  --background-color: #ffffff;
+  --card-background-rgb: 255, 255, 255;
+  --text-color: #333333;
+  --card-background: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --border-color: #eaeaea;
+  --header-background: rgba(255, 255, 255, 0.9);
+  --header-blur: 1px;
   padding-top: 64px; // Header height
-
-  // Smooth conic gradients with continuous blending
   --gradient-home: conic-gradient(
     from 45deg at 50% 50%,
-    color-mix(in srgb, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, transparent)
-  );
-
-  --gradient-about: conic-gradient(
-    from 90deg at 50% 50%,
     var(--accent-color),
-    color-mix(in srgb, var(--accent-color), var(--primary-color)),
+    color-mix(in srgb, var(--accent-color) 90%, var(--primary-color) 10%),
+    color-mix(in srgb, var(--accent-color) 60%, var(--primary-color) 40%),
     var(--primary-color),
-    color-mix(in srgb, var(--primary-color), var(--secondary-color)),
+    color-mix(in srgb, var(--primary-color) 90%, var(--secondary-color) 10%),
+    color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color) 40%),
     var(--secondary-color),
-    color-mix(in srgb, var(--secondary-color), var(--accent-color)),
+    color-mix(in srgb, var(--secondary-color) 90%, var(--accent-color) 10%),
+    color-mix(in srgb, var(--secondary-color) 60%, var(--accent-color) 40%),
     var(--accent-color)
   );
-
   --gradient-projects: conic-gradient(
     from 135deg at 50% 50%,
     var(--secondary-color),
-    color-mix(in srgb, var(--secondary-color), var(--accent-color)),
+    color-mix(in srgb, var(--secondary-color) 90%, var(--accent-color) 10%),
+    color-mix(in srgb, var(--secondary-color) 60%, var(--accent-color) 40%),
     var(--accent-color),
-    color-mix(in srgb, var(--accent-color), var(--primary-color)),
+    color-mix(in srgb, var(--accent-color) 90%, var(--primary-color) 10%),
+    color-mix(in srgb, var(--accent-color) 60%, var(--primary-color) 40%),
     var(--primary-color),
-    color-mix(in srgb, var(--primary-color), var(--secondary-color)),
+    color-mix(in srgb, var(--primary-color) 90%, var(--secondary-color) 10%),
+    color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color) 40%),
     var(--secondary-color)
   );
-
   --gradient-blog: conic-gradient(
     from 180deg at 50% 50%,
     var(--primary-color),
-    color-mix(in srgb, var(--primary-color), var(--accent-color)),
+    color-mix(in srgb, var(--primary-color) 90%, var(--accent-color) 10%),
+    color-mix(in srgb, var(--primary-color) 60%, var(--accent-color) 40%),
     var(--accent-color),
-    color-mix(in srgb, var(--accent-color), var(--secondary-color)),
+    color-mix(in srgb, var(--accent-color) 90%, var(--secondary-color) 10%),
+    color-mix(in srgb, var(--accent-color) 60%, var(--secondary-color) 40%),
     var(--secondary-color),
-    color-mix(in srgb, var(--secondary-color), var(--primary-color)),
+    color-mix(in srgb, var(--secondary-color) 90%, var(--primary-color) 10%),
+    color-mix(in srgb, var(--secondary-color) 60%, var(--primary-color) 40%),
     var(--primary-color)
   );
-
   --gradient-contact: conic-gradient(
     from 225deg at 50% 50%,
     var(--accent-color),
-    color-mix(in srgb, var(--accent-color), var(--secondary-color)),
+    color-mix(in srgb, var(--accent-color) 90%, var(--secondary-color) 10%),
+    color-mix(in srgb, var(--accent-color) 60%, var(--secondary-color) 40%),
     var(--secondary-color),
-    color-mix(in srgb, var(--secondary-color), var(--primary-color)),
+    color-mix(in srgb, var(--secondary-color) 90%, var(--primary-color) 10%),
+    color-mix(in srgb, var(--secondary-color) 60%, var(--primary-color) 40%),
     var(--primary-color),
-    color-mix(in srgb, var(--primary-color), var(--accent-color)),
+    color-mix(in srgb, var(--primary-color) 90%, var(--accent-color) 10%),
+    color-mix(in srgb, var(--primary-color) 60%, var(--accent-color) 40%),
     var(--accent-color)
   );
-
-  // Legal pages gradients
   --gradient-legal: conic-gradient(
     from 270deg at 50% 50%,
-    color-mix(in srgb, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, transparent)
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 15%),
+    color-mix(in srgb, var(--primary-color) 50%, var(--secondary-color) 50%),
+    color-mix(in srgb, var(--primary-color) 15%, var(--secondary-color) 85%),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 15%),
+    color-mix(in srgb, var(--secondary-color) 50%, var(--accent-color) 50%),
+    color-mix(in srgb, var(--secondary-color) 15%, var(--accent-color) 85%),
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 15%),
+    color-mix(in srgb, var(--accent-color) 50%, var(--primary-color) 50%),
+    color-mix(in srgb, var(--accent-color) 15%, var(--primary-color) 85%),
+    var(--primary-color)
   );
-
   --gradient-privacy: conic-gradient(
     from 315deg at 50% 50%,
-    color-mix(in srgb, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, transparent)
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 15%),
+    color-mix(in srgb, var(--primary-color) 50%, var(--secondary-color) 50%),
+    color-mix(in srgb, var(--primary-color) 15%, var(--secondary-color) 85%),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 15%),
+    color-mix(in srgb, var(--secondary-color) 50%, var(--accent-color) 50%),
+    color-mix(in srgb, var(--secondary-color) 15%, var(--accent-color) 85%),
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 15%),
+    color-mix(in srgb, var(--accent-color) 50%, var(--primary-color) 50%),
+    color-mix(in srgb, var(--accent-color) 15%, var(--primary-color) 85%),
+    var(--primary-color)
   );
-
   --gradient-terms: conic-gradient(
     from 360deg at 50% 50%,
-    color-mix(in srgb, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, transparent)
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 15%),
+    color-mix(in srgb, var(--primary-color) 50%, var(--secondary-color) 50%),
+    color-mix(in srgb, var(--primary-color) 15%, var(--secondary-color) 85%),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 15%),
+    color-mix(in srgb, var(--secondary-color) 50%, var(--accent-color) 50%),
+    color-mix(in srgb, var(--secondary-color) 15%, var(--accent-color) 85%),
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 15%),
+    color-mix(in srgb, var(--accent-color) 50%, var(--primary-color) 50%),
+    color-mix(in srgb, var(--accent-color) 15%, var(--primary-color) 85%),
+    var(--primary-color)
+  );
+  --gradient-about: conic-gradient(
+    from 90deg at 50% 50%,
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 15%),
+    color-mix(in srgb, var(--accent-color) 50%, var(--primary-color) 50%),
+    color-mix(in srgb, var(--accent-color) 15%, var(--primary-color) 85%),
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 15%),
+    color-mix(in srgb, var(--primary-color) 50%, var(--secondary-color) 50%),
+    color-mix(in srgb, var(--primary-color) 15%, var(--secondary-color) 85%),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 15%),
+    color-mix(in srgb, var(--secondary-color) 50%, var(--accent-color) 50%),
+    color-mix(in srgb, var(--secondary-color) 15%, var(--accent-color) 85%),
+    var(--accent-color)
   );
 }
 
-[data-theme="light"] {
-  // Light mode colors - 채도를 낮춘 버전
-  --primary-color: #5885B0;    // 더 부드러운 청색
-  --secondary-color: #79A2C7;  // 더 부드러운 중간 청색
-  --accent-color: #B8E2F2;     // 더 부드러운 하늘색
-  --muted-color: #D8F2EC;      // 더 부드러운 민트색
-  
-  --text-color: #2c3e50;
-  --background-color: #ffffff;
-  --card-background: #ffffff;
-  --border-color: #e0e0e0;
-  
-  --card-background-rgb: 255, 255, 255;
-  --primary-color-rgb: 54, 116, 181;    // #3674B5
-  --header-background: rgba(255, 255, 255, 0.9);
-  --header-blur: 1px;
-  --gradient: var(--gradient-home); // 기본 그라데이션
-}
-
-[data-theme="dark"] {
-  // Dark mode colors - 채도를 낮춘 버전
+[data-theme='dark'] {
   --primary-color: #A84578;     // 더 부드러운 진한 핑크
   --secondary-color: #6E4B8F;   // 더 부드러운 보라
   --accent-color: #8B4B82;      // 더 부드러운 자주
@@ -133,69 +145,81 @@
   --primary-color-rgb: 97, 12, 159;    // #610C9F
   --header-background: rgba(18, 18, 18, 0.9);
   --header-blur: 10px;
-  // Dark mode conic gradients
+
   --gradient-home: conic-gradient(
     from 45deg at 50% 50%,
-    color-mix(in srgb, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, transparent),
-    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, transparent),
-    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 85%, transparent),
-    color-mix(in srgb, var(--primary-color) 85%, transparent)
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color) 90%, var(--primary-color) 10%),
+    color-mix(in srgb, var(--accent-color) 60%, var(--primary-color) 40%),
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color) 90%, var(--secondary-color) 10%),
+    color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color) 40%),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color) 90%, var(--accent-color) 10%),
+    color-mix(in srgb, var(--secondary-color) 60%, var(--accent-color) 40%),
+    var(--accent-color)
   );
 
-  --gradient-about: conic-gradient(
-    from 90deg at 50% 50%,
-    var(--accent-color) 0deg,
-    var(--accent-color) 60deg,
-    color-mix(in srgb, var(--accent-color) 75%, var(--primary-color) 25%) 90deg,
-    color-mix(in srgb, var(--accent-color) 25%, var(--primary-color) 75%) 120deg,
-    var(--primary-color) 150deg,
-    var(--primary-color) 180deg,
-    color-mix(in srgb, var(--primary-color) 75%, var(--secondary-color) 25%) 210deg,
-    color-mix(in srgb, var(--primary-color) 25%, var(--secondary-color) 75%) 240deg,
-    var(--secondary-color) 270deg,
-    var(--secondary-color) 300deg,
-    color-mix(in srgb, var(--secondary-color) 75%, var(--accent-color) 25%) 330deg,
-    color-mix(in srgb, var(--secondary-color) 25%, var(--accent-color) 75%) 360deg
-  );
 
   --gradient-projects: conic-gradient(
-    from 135deg at 50% 50%,
-    var(--secondary-color) 0deg,
-    var(--secondary-color) 90deg,
-    var(--accent-color) 120deg,
-    var(--accent-color) 210deg,
-    var(--primary-color) 240deg,
-    var(--primary-color) 330deg,
-    var(--secondary-color) 360deg
-  );
+      from 135deg at 50% 50%,
+      var(--secondary-color),
+      color-mix(in srgb, var(--secondary-color) 90%, var(--accent-color) 10%),
+      color-mix(in srgb, var(--secondary-color) 60%, var(--accent-color) 40%),
+      var(--accent-color),
+      color-mix(in srgb, var(--accent-color) 90%, var(--primary-color) 10%),
+      color-mix(in srgb, var(--accent-color) 60%, var(--primary-color) 40%),
+      var(--primary-color),
+      color-mix(in srgb, var(--primary-color) 90%, var(--secondary-color) 10%),
+      color-mix(in srgb, var(--primary-color) 60%, var(--secondary-color) 40%),
+      var(--secondary-color)
+    );
+
 
   --gradient-blog: conic-gradient(
     from 180deg at 50% 50%,
-    var(--primary-color) 0deg,
-    var(--primary-color) 90deg,
-    var(--accent-color) 120deg,
-    var(--accent-color) 210deg,
-    var(--secondary-color) 240deg,
-    var(--secondary-color) 330deg,
-    var(--primary-color) 360deg
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color) 90%, var(--accent-color) 10%),
+    color-mix(in srgb, var(--primary-color) 60%, var(--accent-color) 40%),
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color) 90%, var(--secondary-color) 10%),
+    color-mix(in srgb, var(--accent-color) 60%, var(--secondary-color) 40%),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color) 90%, var(--primary-color) 10%),
+    color-mix(in srgb, var(--secondary-color) 60%, var(--primary-color) 40%),
+    var(--primary-color)
   );
-
   --gradient-contact: conic-gradient(
     from 225deg at 50% 50%,
-    var(--accent-color) 0deg,
-    var(--accent-color) 90deg,
-    var(--secondary-color) 120deg,
-    var(--secondary-color) 210deg,
-    var(--primary-color) 240deg,
-    var(--primary-color) 330deg,
-    var(--accent-color) 360deg
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color) 90%, var(--secondary-color) 10%),
+    color-mix(in srgb, var(--accent-color) 60%, var(--secondary-color) 40%),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color) 90%, var(--primary-color) 10%),
+    color-mix(in srgb, var(--secondary-color) 60%, var(--primary-color) 40%),
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color) 90%, var(--accent-color) 10%),
+    color-mix(in srgb, var(--primary-color) 60%, var(--accent-color) 40%),
+    var(--accent-color)
+    );
+  --gradient-about: conic-gradient(
+    from 90deg at 50% 50%,
+    var(--accent-color),
+    color-mix(in srgb, var(--accent-color) 85%, var(--primary-color) 15%),
+    color-mix(in srgb, var(--accent-color) 50%, var(--primary-color) 50%),
+    color-mix(in srgb, var(--accent-color) 15%, var(--primary-color) 85%),
+    var(--primary-color),
+    color-mix(in srgb, var(--primary-color) 85%, var(--secondary-color) 15%),
+    color-mix(in srgb, var(--primary-color) 50%, var(--secondary-color) 50%),
+    color-mix(in srgb, var(--primary-color) 15%, var(--secondary-color) 85%),
+    var(--secondary-color),
+    color-mix(in srgb, var(--secondary-color) 85%, var(--accent-color) 15%),
+    color-mix(in srgb, var(--secondary-color) 50%, var(--accent-color) 50%),
+    color-mix(in srgb, var(--secondary-color) 15%, var(--accent-color) 85%),
+    var(--accent-color)
   );
 }
 
-// Base styles
 html,
 body {
   max-width: 100vw;
@@ -205,7 +229,10 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -216,91 +243,18 @@ body {
   margin: 0;
 }
 
-// Typography
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-color);
-}
-
-// Links
 a {
-  color: var(--primary-color);
+  color: inherit;
   text-decoration: none;
-  transition: color 0.2s ease;
-  
-  &:hover {
-    color: var(--accent-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
   }
 }
 
-// Common button styles
-.button-base {
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.categoryButton {
-  @extend .button-base;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--border-color);
-  background: var(--card-background);
-  color: var(--text-color);
-  font-size: 0.875rem;
-  font-weight: 500;
-
-  &:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-  }
-
-  &.active {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    color: white;
-  }
-}
-
-.submitButton {
-  @extend .button-base;
-  width: 100%;
-  padding: 1rem;
-  background: var(--primary-color);
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-
-  &:hover {
-    background: var(--secondary-color);
-  }
-}
-
-.tag {
-  @extend .button-base;
-  padding: 0.25rem 0.75rem;
-  background: var(--primary-color);
-  color: white;
-  font-size: 0.75rem;
-  font-weight: 500;
-  opacity: 0.9;
-
-  &:hover {
-    opacity: 1;
-  }
-}
-
-// Cards
-.card {
-  background-color: var(--card-background);
-  border: 1px solid var(--border-color);
-  padding: 1rem;
-  transition: all 0.2s ease;
-  
-  &:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-}
-
-// Scrollbar
+// Customize scrollbar
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -311,8 +265,14 @@ a {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
+  border-radius: 5px;
+  
+  &:hover {
+    background: var(--primary-color);
+  }
 }
 
+// Firefox scrollbar
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--border-color) var(--background-color);
