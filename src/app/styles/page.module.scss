@@ -12,7 +12,11 @@
   justify-content: center;
   text-align: center;
   padding: 6rem 2rem;
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(
+    to right,
+    var(--primary-color),
+    var(--secondary-color)
+  );
   color: white;
   margin-bottom: 0;
 
@@ -31,7 +35,8 @@
   }
 }
 
-.features, .about {
+.features,
+.about {
   padding: 6rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -94,7 +99,7 @@
 .about {
   background: var(--card-background);
   border-top: 1px solid var(--border-color);
-  
+
   h2 {
     text-align: center;
     font-size: 2.5rem;
@@ -111,7 +116,8 @@
   gap: 3rem;
   margin-bottom: 6rem;
 
-  .mission, .vision {
+  .mission,
+  .vision {
     padding: 2rem;
     background: var(--card-background);
     border: 1px solid var(--border-color);
@@ -210,7 +216,8 @@
     }
   }
 
-  .features, .about {
+  .features,
+  .about {
     padding: 2rem 1rem;
   }
 
@@ -234,4 +241,4 @@
       font-size: 1.8rem;
     }
   }
-} 
+}

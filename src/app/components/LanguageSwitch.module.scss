@@ -27,7 +27,7 @@
 
   // Add a subtle animation when language changes
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: -4px;
     border: 2px solid var(--primary-color);
@@ -59,4 +59,4 @@
 .button {
   background: transparent;
   border: none;
-} 
+}

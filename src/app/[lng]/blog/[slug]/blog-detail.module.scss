@@ -6,12 +6,12 @@
   padding: 6rem 2rem;
   background: var(--gradient-blog);
   color: white;
-  
+
   h1 {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;  
+    letter-spacing: -0.02em;
     color: white;
   }
   .heroContent {
@@ -112,7 +112,7 @@
 }
 
 .tag {
-  composes: tag from global;
+  @extend :global(.tag) !optional;
 }
 
 .share {
@@ -122,7 +122,7 @@
 }
 
 .shareButton {
-  composes: categoryButton from global;
+  @extend :global(.categoryButton) !optional;
 }
 
 .relatedPosts {
@@ -216,4 +216,4 @@
   .relatedGrid {
     grid-template-columns: 1fr;
   }
-} 
+}
