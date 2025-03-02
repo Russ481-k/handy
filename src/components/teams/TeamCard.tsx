@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { Teams } from "@/types/section";
+
 import styles from "@/styles/modules/TeamCard.module.scss";
 import { useState } from "react";
+import BaseCard from "../common/BaseCard";
+import { Teams } from "@/types/teams";
 
 interface TeamCardProps {
   member: Teams;
@@ -15,25 +16,22 @@ export function TeamCard({ member, className = "" }: TeamCardProps) {
   // 이미지 로드 오류 처리를 위한 상태
   const [imageError, setImageError] = useState(false);
 
-  // 컨테이너 클래스 설정
+  // 컨테이너 클래스
   const containerClass = `${styles.card} ${className}`;
 
+  // 이미지 URL이 없는 경우도 fallbackImage 사용
+  const showFallbackImage = imageError || !member.photo || member.photo === "";
+
   return (
-    <motion.div
-      className={containerClass}
-      initial={{ y: 0 }}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3 }}
-      style={{ position: "relative", zIndex: 1 }}
-    >
+    <BaseCard className={containerClass}>
       <div className={styles.imageContainer}>
-        {imageError ? (
+        {showFallbackImage ? (
           <div className={styles.fallbackImage}>
             <span>{member.name.charAt(0)}</span>
           </div>
         ) : (
           <Image
-            src={member.image}
+            src={member.photo}
             alt={member.name}
             fill
             className={styles.image}
@@ -44,8 +42,8 @@ export function TeamCard({ member, className = "" }: TeamCardProps) {
       <div className={styles.content}>
         <h3 className={styles.title}>{member.name}</h3>
         <p className={styles.role}>{member.role}</p>
-        <p className={styles.description}>{member.description}</p>
+        <p className={styles.description}>{member.bio}</p>
       </div>
-    </motion.div>
+    </BaseCard>
   );
 }

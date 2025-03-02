@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { Project } from "@/types/project";
 import styles from "@/styles/modules/ProjectCard.module.scss";
 import { useState } from "react";
+import BaseCard from "../common/BaseCard";
 
 interface ProjectCardProps {
   project: Project;
@@ -30,13 +30,7 @@ export function ProjectCard({
     imageError || !project.thumbnail || project.thumbnail === "";
 
   return (
-    <motion.div
-      className={containerClass}
-      initial={{ y: 0 }}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3 }}
-      style={{ position: "relative", zIndex: 1 }}
-    >
+    <BaseCard className={containerClass}>
       <div className={styles.imageContainer}>
         {showFallbackImage ? (
           <div className={styles.fallbackImage}>
@@ -55,13 +49,17 @@ export function ProjectCard({
       <div className={styles.content}>
         <h3 className={styles.title}>{project.title}</h3>
         <p className={styles.description}>{project.description}</p>
-        <div className={styles.technologies}>
-          {project.technologies.map((tech) => (
-            <span key={tech} className={styles.technology}>
-              {tech}
-            </span>
-          ))}
-        </div>
+
+        {project.technologies && project.technologies.length > 0 && (
+          <div className={styles.technologies}>
+            {project.technologies.map((tech) => (
+              <span key={tech} className={styles.technology}>
+                {tech}
+              </span>
+            ))}
+          </div>
+        )}
+
         <div className={styles.links}>
           {project.githubUrl && (
             <a
@@ -69,9 +67,10 @@ export function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
-              aria-label={`GitHub 링크: ${project.title}`}
+              aria-label="GitHub 저장소"
             >
               <FiGithub aria-hidden="true" size={20} />
+              <span>GitHub</span>
             </a>
           )}
           {project.demoUrl && (
@@ -80,13 +79,14 @@ export function ProjectCard({
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
-              aria-label={`데모 링크: ${project.title}`}
+              aria-label="라이브 데모"
             >
               <FiExternalLink aria-hidden="true" size={20} />
+              <span>Demo</span>
             </a>
           )}
         </div>
       </div>
-    </motion.div>
+    </BaseCard>
   );
 }

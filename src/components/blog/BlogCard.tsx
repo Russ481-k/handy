@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { FiClock, FiCalendar } from "react-icons/fi";
 import { BlogPost } from "@/types/blog";
 import styles from "@/styles/modules/BlogCard.module.scss";
 import { useState } from "react";
+import BaseCard from "../common/BaseCard";
 
 interface BlogCardProps {
   post: BlogPost;
@@ -30,13 +30,7 @@ export function BlogCard({
     imageError || !post.thumbnail || post.thumbnail === "";
 
   return (
-    <motion.div
-      className={containerClass}
-      initial={{ y: 0 }}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.3 }}
-      style={{ position: "relative", zIndex: 1 }}
-    >
+    <BaseCard className={containerClass}>
       <div className={styles.imageContainer}>
         {showFallbackImage ? (
           <div className={styles.fallbackImage}>
@@ -77,6 +71,6 @@ export function BlogCard({
           </div>
         </div>
       </div>
-    </motion.div>
+    </BaseCard>
   );
 }

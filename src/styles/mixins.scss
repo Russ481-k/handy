@@ -1,22 +1,57 @@
 // 글로벌 카드 스타일 믹스인
-@mixin card-style {
+@mixin card-style(
+  $height: auto,
+  $shadow: var(--shadow-md),
+  $hover-shadow: var(--shadow-lg)
+) {
   border: 1px solid var(--border-color);
   border-radius: 0;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: $shadow;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  height: $height;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: $hover-shadow;
     border-color: var(--hover-border-color);
   }
 }
 
-// 이미지 애니메이션 믹스인
-@mixin image-hover {
+// 이미지 컨테이너 믹스인
+@mixin image-container($height: 12rem) {
+  position: relative;
+  height: $height;
   overflow: hidden;
+}
 
-  img {
-    transition: transform 0.3s ease;
+// 반응형 그리드 믹스인
+@mixin responsive-grid($min-width: 300px, $gap: 2rem) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+  gap: $gap;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// 미디어 쿼리 믹스인
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 769px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
   }
 }
