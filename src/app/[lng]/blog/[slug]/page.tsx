@@ -12,6 +12,8 @@ import {
 } from "react-icons/io5";
 import styles from "./blog-detail.module.scss";
 import type { CustomTypeOptions } from "../../../i18n/types";
+import { BlogCard } from "@/components/blog/BlogCard";
+import { BlogPost as BlogPostType } from "@/types/blog";
 
 type BlogPost =
   CustomTypeOptions["resources"]["common"]["blog_page"]["posts"][number];
@@ -26,7 +28,6 @@ export default function BlogDetailPage({
   const [post, setPost] = useState<BlogPost | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
   const [mainImageError, setMainImageError] = useState(false);
-  const [relatedImageErrors, setRelatedImageErrors] = useState<boolean[]>([]);
 
   useEffect(() => {
     const posts = t<BlogPost[]>("blog_page.posts", {
@@ -45,16 +46,8 @@ export default function BlogDetailPage({
       ],
     });
     setPost(posts[0]);
-    const related = posts.slice(1, 4);
-    setRelatedPosts(related);
-    setRelatedImageErrors(Array(related.length).fill(false));
+    setRelatedPosts(posts.slice(1, 4));
   }, [t]);
-
-  const handleRelatedImageError = (index: number) => {
-    const newImageErrors = [...relatedImageErrors];
-    newImageErrors[index] = true;
-    setRelatedImageErrors(newImageErrors);
-  };
 
   if (!post) return null;
 
@@ -131,31 +124,25 @@ export default function BlogDetailPage({
           {t("blog_detail.related_posts")}
         </h2>
         <div className={styles.relatedGrid}>
-          {relatedPosts.map((post, index) => {
-            const showRelatedFallbackImage =
-              relatedImageErrors[index] ||
-              !post.thumbnail ||
-              post.thumbnail === "";
+          {relatedPosts.map((relatedPost, index) => {
+            const blogPost: BlogPostType = {
+              id: index.toString(),
+              title: relatedPost.title,
+              excerpt: relatedPost.description,
+              thumbnail: relatedPost.thumbnail || "",
+              content: "",
+              date: relatedPost.date,
+              readTime: relatedPost.readTime,
+              tags: relatedPost.tags || [],
+              category: relatedPost.category,
+            };
 
             return (
-              <div key={index} className={styles.relatedPost}>
-                {showRelatedFallbackImage ? (
-                  <div className={styles.fallbackImage}>
-                    <span>{post.title.charAt(0)}</span>
-                  </div>
-                ) : (
-                  <Image
-                    src={post.thumbnail}
-                    alt={post.title}
-                    width={400}
-                    height={200}
-                    className={styles.relatedImage}
-                    onError={() => handleRelatedImageError(index)}
-                  />
-                )}
-                <h3 className={styles.relatedTitle}>{post.title}</h3>
-                <p className={styles.relatedDescription}>{post.description}</p>
-              </div>
+              <BlogCard
+                key={index}
+                post={blogPost}
+                className={styles.relatedPostCard}
+              />
             );
           })}
         </div>

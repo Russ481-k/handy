@@ -14,7 +14,7 @@ interface HomePageProps {
 export default async function HomePage({ params }: HomePageProps) {
   const { lng } = await params;
   const projects = await getFeaturedProjects(3);
-  const posts = await getRecentBlogPosts(2);
+  const posts = await getRecentBlogPosts(3);
   const { t } = await getTranslation(lng, "common");
 
   return (

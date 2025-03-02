@@ -25,3 +25,13 @@
   height: 100%;
   object-fit: cover;
 }
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.relatedPostCard {
+  height: 100%;
+}
