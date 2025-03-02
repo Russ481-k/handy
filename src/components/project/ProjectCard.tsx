@@ -32,8 +32,10 @@ export function ProjectCard({
   return (
     <motion.div
       className={containerClass}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.2 }}
+      initial={{ y: 0 }}
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      style={{ position: "relative", zIndex: 1 }}
     >
       <div className={styles.imageContainer}>
         {showFallbackImage ? (

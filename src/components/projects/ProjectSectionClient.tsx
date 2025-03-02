@@ -50,6 +50,7 @@ export function ProjectSectionClient({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               <div className={styles.imageWrapper}>
                 {imageErrors[index] ||

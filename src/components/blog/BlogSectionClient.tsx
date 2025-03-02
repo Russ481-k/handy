@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { BlogPost } from "@/types/blog";
 import styles from "@/styles/modules/blog.module.scss";
 import { BlogCard } from "./BlogCard";
@@ -34,12 +35,29 @@ export function BlogSectionClient({
   return (
     <main className={styles.main}>
       <section className={styles.hero}>
-        <h1>{title}</h1>
-        <p>{subtitle}</p>
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {title}
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          {subtitle}
+        </motion.p>
       </section>
 
       <section className={styles.content}>
-        <div className={styles.categories}>
+        <motion.div
+          className={styles.categories}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           {categories.map((category) => (
             <button
               key={category.id}
@@ -51,11 +69,19 @@ export function BlogSectionClient({
               {category.label}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         <div className={styles.grid}>
-          {filteredPosts.map((post) => (
-            <BlogCard key={post.id} post={post} />
+          {filteredPosts.map((post, index) => (
+            <motion.div
+              key={post.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <BlogCard post={post} />
+            </motion.div>
           ))}
         </div>
       </section>

@@ -4,29 +4,19 @@
   border-radius: 0;
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 
   &:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: var(--hover-border-color);
-
-    .image {
-      transform: scale(1.05);
-    }
   }
 }
 
-// 이미지 확대 애니메이션 믹스인
+// 이미지 애니메이션 믹스인
 @mixin image-hover {
   overflow: hidden;
 
   img {
     transition: transform 0.3s ease;
-  }
-
-  &:hover img {
-    transform: scale(1.05);
   }
 }
