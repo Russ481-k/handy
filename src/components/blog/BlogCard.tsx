@@ -66,11 +66,11 @@ export function BlogCard({
 
         <div className={styles.meta}>
           <div className={styles.metaItem} aria-label="작성일">
-            <FiCalendar aria-hidden="true" />
+            <FiCalendar aria-hidden="true" size={20} />
             <span>{post.date}</span>
           </div>
           <div className={styles.metaItem} aria-label="읽는 시간">
-            <FiClock aria-hidden="true" />
+            <FiClock aria-hidden="true" size={20} />
             <span>{post.readTime}</span>
           </div>
         </div>

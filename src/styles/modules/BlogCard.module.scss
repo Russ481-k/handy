@@ -86,8 +86,9 @@
   padding: 0.25rem 0.75rem;
   background-color: var(--background-tertiary);
   border-radius: 9999px;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--text-tertiary);
+  font-weight: 500;
 }
 
 // 페이지별 스타일 믹스인
@@ -111,6 +112,8 @@
   }
 
   .fallbackImage {
+    background-color: var(--background-tertiary);
+
     span {
       color: var(--text-secondary);
     }
