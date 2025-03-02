@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, use } from "react";
-import { useTranslation } from "../../i18n/client";
+import { useTranslation } from "@/app/i18n/client";
 import {
   IoLocationOutline,
   IoMailOutline,
   IoCallOutline,
 } from "react-icons/io5";
-import styles from "./contact.module.scss";
+import styles from "@/styles/modules/contact.module.scss";
 
 interface FormData {
   name: string;

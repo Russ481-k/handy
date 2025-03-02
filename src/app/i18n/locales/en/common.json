@@ -20,6 +20,39 @@
       }
     }
   },
+  "team": {
+    "title": "Our Team",
+    "items": {
+      "ceo": {
+        "name": "John Doe",
+        "role": "CEO",
+        "description": "Visionary leader with 15+ years of experience",
+        "image": "/team/ceo.jpg"
+      },
+      "cfo": {
+        "name": "Jane Smith",
+        "role": "CFO",
+        "description": "Financial expert with strong strategic planning skills",
+        "image": "/team/cfo.jpg"
+      },
+      "cto": {
+        "name": "Mike Johnson",
+        "role": "CTO",
+        "description": "Tech innovator with deep engineering background",
+        "image": "/team/cto.jpg"
+      }
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "description": "Check out some of our featured projects that showcase our expertise and innovation",
+    "view_all": "View All Projects"
+  },
+  "blog": {
+    "title": "Recent Blog Posts",
+    "description": "Stay updated with our latest insights and developments in technology",
+    "view_all": "View All Posts"
+  },
   "about": {
     "title": "About Us",
     "mission": {
@@ -48,7 +81,12 @@
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "copyright": "© 2024 Handy. All rights reserved.",
-    "slogan": "Building the future with innovative technology"
+    "slogan": "Innovation for Everyone",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "legal": "Legal"
+    }
   },
   "about_page": {
     "title": "We Pursue Innovation",
@@ -136,6 +174,39 @@
       }
     ]
   },
+  "blog_page": {
+    "title": "Tech Blog",
+    "subtitle": "Sharing the latest tech trends and development stories",
+    "categories": {
+      "all": "All",
+      "development": "Development",
+      "technology": "Technology",
+      "design": "Design",
+      "culture": "Culture"
+    },
+    "posts": [
+      {
+        "title": "The Future of AI Development",
+        "description": "Exploring the latest trends in artificial intelligence",
+        "category": "technology",
+        "author": "John Doe",
+        "date": "2024-03-01",
+        "readTime": "5 min read",
+        "thumbnail": "/blog/ai-future.jpg",
+        "tags": ["AI", "Machine Learning", "Technology"]
+      },
+      {
+        "title": "Building Modern Web Applications",
+        "description": "Best practices for modern web development",
+        "category": "development",
+        "author": "Jane Smith",
+        "date": "2024-02-28",
+        "readTime": "7 min read",
+        "thumbnail": "/blog/web-dev.jpg",
+        "tags": ["Web Development", "JavaScript", "React"]
+      }
+    ]
+  },
   "contact_page": {
     "title": "Contact Us",
     "subtitle": "Want to talk about a project or collaboration?",
@@ -163,59 +234,6 @@
         "value": "+82-2-1234-5678"
       }
     }
-  },
-  "blog_page": {
-    "title": "Tech Blog",
-    "subtitle": "Sharing the latest tech trends and development stories",
-    "categories": {
-      "all": "All",
-      "development": "Development",
-      "technology": "Technology",
-      "design": "Design",
-      "culture": "Culture"
-    },
-    "posts": [
-      {
-        "title": "Modern Web Development with Next.js 13",
-        "description": "Introducing web development methods using Next.js 13's new features and App Router.",
-        "category": "development",
-        "author": "John Dev",
-        "date": "2024-03-15",
-        "readTime": "5 min",
-        "thumbnail": "/blog/nextjs.jpg",
-        "tags": ["Next.js", "React", "Web Development"]
-      },
-      {
-        "title": "UX Design in the AI Era",
-        "description": "Exploring changes and trends in user experience design in the age of artificial intelligence.",
-        "category": "design",
-        "author": "Sarah Design",
-        "date": "2024-03-10",
-        "readTime": "4 min",
-        "thumbnail": "/blog/ux-design.jpg",
-        "tags": ["UX", "AI", "Design"]
-      },
-      {
-        "title": "Adopting Microservices Architecture",
-        "description": "Sharing the journey and experience of transitioning from monolithic to microservices.",
-        "category": "technology",
-        "author": "Mike Arch",
-        "date": "2024-03-05",
-        "readTime": "7 min",
-        "thumbnail": "/blog/microservices.jpg",
-        "tags": ["MSA", "Architecture", "Cloud"]
-      },
-      {
-        "title": "Developer Growth and Learning",
-        "description": "Sharing effective learning methods and experiences for continuous growth.",
-        "category": "culture",
-        "author": "Tom Learning",
-        "date": "2024-03-01",
-        "readTime": "6 min",
-        "thumbnail": "/blog/learning.jpg",
-        "tags": ["Learning", "Career", "Growth"]
-      }
-    ]
   },
   "blog_detail": {
     "back_to_blog": "Back to Blog",
@@ -270,4 +288,4 @@
       "content": "Information about contract termination..."
     }
   }
-} 
+}

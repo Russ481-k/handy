@@ -1,0 +1,116 @@
+@import "../../styles/mixins.scss";
+
+.card {
+  @include card-style;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  position: relative;
+  height: 12rem;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.fallbackImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-secondary);
+
+  span {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+}
+
+.content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.technology {
+  padding: 0.25rem 0.75rem;
+  background-color: var(--background-tertiary);
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.link {
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+// 페이지별 스타일 믹스인
+@mixin projectPage {
+  .card {
+    background-color: var(--background-primary);
+    border-color: var(--border-color-light);
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .technology {
+    background-color: var(--primary-color-light);
+    color: var(--primary-color);
+  }
+
+  .fallbackImage {
+    background-color: var(--background-tertiary);
+
+    span {
+      color: var(--text-secondary);
+    }
+  }
+}
+
+.page {
+  @include projectPage;
+}

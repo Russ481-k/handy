@@ -1,8 +1,8 @@
 "use client";
 
 import { use } from "react";
-import { useTranslation } from "../../i18n/client";
-import styles from "./terms.module.scss";
+import { useTranslation } from "@/app/i18n/client";
+import styles from "@/styles/modules/terms.module.scss";
 
 export default function TermsPage({
   params,

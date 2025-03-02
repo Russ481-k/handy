@@ -1,8 +1,8 @@
 "use client";
 
 import { use } from "react";
-import { useTranslation } from "../../i18n/client";
-import styles from "./privacy.module.scss";
+import { useTranslation } from "@/app/i18n/client";
+import styles from "@/styles/modules/privacy.module.scss";
 
 export default function PrivacyPage({
   params,

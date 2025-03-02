@@ -25,16 +25,41 @@ export default function BlogDetailPage({
   const { t } = useTranslation(lng, "common");
   const [post, setPost] = useState<BlogPost | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
+  const [mainImageError, setMainImageError] = useState(false);
+  const [relatedImageErrors, setRelatedImageErrors] = useState<boolean[]>([]);
 
   useEffect(() => {
     const posts = t<BlogPost[]>("blog_page.posts", {
       returnObjects: true,
+      defaultValue: [
+        {
+          title: "",
+          description: "",
+          category: "",
+          author: "",
+          date: "",
+          readTime: "",
+          thumbnail: "",
+          tags: [],
+        },
+      ],
     });
     setPost(posts[0]);
-    setRelatedPosts(posts.slice(1, 4));
+    const related = posts.slice(1, 4);
+    setRelatedPosts(related);
+    setRelatedImageErrors(Array(related.length).fill(false));
   }, [t]);
 
+  const handleRelatedImageError = (index: number) => {
+    const newImageErrors = [...relatedImageErrors];
+    newImageErrors[index] = true;
+    setRelatedImageErrors(newImageErrors);
+  };
+
   if (!post) return null;
+
+  const showMainFallbackImage =
+    mainImageError || !post.thumbnail || post.thumbnail === "";
 
   return (
     <main className={styles.main}>
@@ -61,13 +86,20 @@ export default function BlogDetailPage({
 
       <article className={styles.article}>
         <div className={styles.thumbnail}>
-          <Image
-            src={post.thumbnail}
-            alt={post.title}
-            width={1200}
-            height={600}
-            className={styles.image}
-          />
+          {showMainFallbackImage ? (
+            <div className={styles.fallbackImage}>
+              <span>{post.title.charAt(0)}</span>
+            </div>
+          ) : (
+            <Image
+              src={post.thumbnail}
+              alt={post.title}
+              width={1200}
+              height={600}
+              className={styles.image}
+              onError={() => setMainImageError(true)}
+            />
+          )}
         </div>
 
         <div className={styles.content}>
@@ -99,19 +131,33 @@ export default function BlogDetailPage({
           {t("blog_detail.related_posts")}
         </h2>
         <div className={styles.relatedGrid}>
-          {relatedPosts.map((post, index) => (
-            <div key={index} className={styles.relatedPost}>
-              <Image
-                src={post.thumbnail}
-                alt={post.title}
-                width={400}
-                height={200}
-                className={styles.relatedImage}
-              />
-              <h3 className={styles.relatedTitle}>{post.title}</h3>
-              <p className={styles.relatedDescription}>{post.description}</p>
-            </div>
-          ))}
+          {relatedPosts.map((post, index) => {
+            const showRelatedFallbackImage =
+              relatedImageErrors[index] ||
+              !post.thumbnail ||
+              post.thumbnail === "";
+
+            return (
+              <div key={index} className={styles.relatedPost}>
+                {showRelatedFallbackImage ? (
+                  <div className={styles.fallbackImage}>
+                    <span>{post.title.charAt(0)}</span>
+                  </div>
+                ) : (
+                  <Image
+                    src={post.thumbnail}
+                    alt={post.title}
+                    width={400}
+                    height={200}
+                    className={styles.relatedImage}
+                    onError={() => handleRelatedImageError(index)}
+                  />
+                )}
+                <h3 className={styles.relatedTitle}>{post.title}</h3>
+                <p className={styles.relatedDescription}>{post.description}</p>
+              </div>
+            );
+          })}
         </div>
       </section>
     </main>

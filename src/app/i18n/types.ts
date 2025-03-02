@@ -47,6 +47,16 @@ interface CommonResources {
       };
     };
   };
+  projects: {
+    title: string;
+    description: string;
+    view_all: string;
+  };
+  blog: {
+    title: string;
+    description: string;
+    view_all: string;
+  };
   about: {
     title: string;
     mission: {
@@ -197,6 +207,29 @@ interface CommonResources {
     termination: {
       title: string;
       content: string;
+    };
+  };
+  team: {
+    title: string;
+    items: {
+      ceo: {
+        name: string;
+        role: string;
+        description: string;
+        image: string;
+      };
+      cfo: {
+        name: string;
+        role: string;
+        description: string;
+        image: string;
+      };
+      cto: {
+        name: string;
+        role: string;
+        description: string;
+        image: string;
+      };
     };
   };
 }

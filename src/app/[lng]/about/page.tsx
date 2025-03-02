@@ -1,13 +1,13 @@
 "use client";
 
-import styles from "./about.module.scss";
-import { useTranslation } from "../../i18n/client";
+import styles from "@/styles/modules/about.module.scss";
+import { useTranslation } from "@/app/i18n/client";
 import {
   IoRocketOutline,
   IoShieldCheckmarkOutline,
   IoPeopleOutline,
 } from "react-icons/io5";
-import type { CustomTypeOptions } from "../../i18n/types";
+import type { CustomTypeOptions } from "@/app/i18n/types";
 import { ReactElement } from "react";
 import { use } from "react";
 
@@ -44,6 +44,7 @@ export default function AboutPage({
 
   const historyItems = t<HistoryItem[]>("about_page.history.items", {
     returnObjects: true,
+    defaultValue: [{ year: "", title: "", description: "" }],
   });
 
   return (

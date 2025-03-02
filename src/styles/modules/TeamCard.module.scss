@@ -1,0 +1,86 @@
+@import "../../styles/mixins.scss";
+
+.card {
+  @include card-style;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  position: relative;
+  height: 15rem;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.fallbackImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-secondary);
+
+  span {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+}
+
+.content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.role {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  flex: 1;
+}
+
+// 페이지별 스타일 믹스인
+@mixin teamPage {
+  .card {
+    background-color: var(--background-primary);
+    border-color: var(--border-color-light);
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .fallbackImage {
+    background-color: var(--background-tertiary);
+
+    span {
+      color: var(--text-secondary);
+    }
+  }
+}
+
+.page {
+  @include teamPage;
+}

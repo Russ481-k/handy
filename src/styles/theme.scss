@@ -1,0 +1,27 @@
+// 라이트모드(기본값)
+.light-theme {
+  // ... existing code ...
+  --border-color: #eaeaea;
+  --border-color-light: #f5f5f5;
+  --hover-border-color: rgba(
+    37,
+    99,
+    235,
+    0.15
+  ); // 라이트 모드용 연한 primary-color
+  // ... existing code ...
+}
+
+// 다크모드
+.dark-theme {
+  // ... existing code ...
+  --border-color: #333333;
+  --border-color-light: #222222;
+  --hover-border-color: rgba(
+    168,
+    69,
+    120,
+    0.25
+  ); // 다크 모드용 연한 primary-color
+  // ... existing code ...
+}
