@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "@/styles/modules/TeamCard.module.scss";
 import { useState } from "react";
 import BaseCard from "../common/BaseCard";
-import { Teams } from "@/types/teams";
+import { Teams } from "@/types/section";
 
 interface TeamCardProps {
   member: Teams;
@@ -20,7 +20,7 @@ export function TeamCard({ member, className = "" }: TeamCardProps) {
   const containerClass = `${styles.card} ${className}`;
 
   // 이미지 URL이 없는 경우도 fallbackImage 사용
-  const showFallbackImage = imageError || !member.photo || member.photo === "";
+  const showFallbackImage = imageError || !member.image || member.image === "";
 
   return (
     <BaseCard className={containerClass}>
@@ -31,7 +31,7 @@ export function TeamCard({ member, className = "" }: TeamCardProps) {
           </div>
         ) : (
           <Image
-            src={member.photo}
+            src={member.image}
             alt={member.name}
             fill
             className={styles.image}
@@ -42,7 +42,7 @@ export function TeamCard({ member, className = "" }: TeamCardProps) {
       <div className={styles.content}>
         <h3 className={styles.title}>{member.name}</h3>
         <p className={styles.role}>{member.role}</p>
-        <p className={styles.description}>{member.bio}</p>
+        <p className={styles.description}>{member.description}</p>
       </div>
     </BaseCard>
   );
