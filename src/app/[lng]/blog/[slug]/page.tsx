@@ -10,7 +10,7 @@ import {
   IoArrowBack,
   IoShareSocialOutline,
 } from "react-icons/io5";
-import styles from "./blog-detail.module.scss";
+import styles from "@/styles/modules/blog-detail.module.scss";
 import type { CustomTypeOptions } from "../../../i18n/types";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { BlogPost as BlogPostType } from "@/types/blog";
