@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { IoSunnyOutline, IoMoonOutline } from "react-icons/io5";
-import styles from "@/styles/modules/ThemeSwitch.module.scss";
+import styles from "@/styles/modules/theme-switch.module.scss";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);

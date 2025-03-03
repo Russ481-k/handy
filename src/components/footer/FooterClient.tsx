@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FooterData } from "@/types/footer";
-import styles from "@/styles/modules/Footer.module.scss";
+import styles from "@/styles/modules/footer.module.scss";
 
 export function FooterClient({ slogan, links, copyright }: FooterData) {
   return (

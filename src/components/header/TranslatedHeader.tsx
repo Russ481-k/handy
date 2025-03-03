@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
-import styles from "@/styles/modules/Header.module.scss";
+import styles from "@/styles/modules/header.module.scss";
 
 export default function TranslatedHeader({ lng }: { lng: string }) {
   const pathname = usePathname();

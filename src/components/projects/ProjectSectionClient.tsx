@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/types/section";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
-import styles from "@/styles/modules/ProjectSection.module.scss";
+import styles from "@/styles/modules/project-section.module.scss";
 import { useState } from "react";
 
 interface ProjectSectionClientProps {

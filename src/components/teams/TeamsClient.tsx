@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Teams } from "@/types/section";
-import styles from "@/styles/modules/Teams.module.scss";
+import styles from "@/styles/modules/teams.module.scss";
 import { TeamCard } from "./TeamCard";
 
 interface TeamsClientProps {

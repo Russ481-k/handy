@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Feature } from "@/types/section";
-import styles from "@/styles/modules/Features.module.scss";
+import styles from "@/styles/modules/features.module.scss";
 import {
   IoHeartOutline,
   IoRocketOutline,

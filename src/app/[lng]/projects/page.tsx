@@ -2,7 +2,7 @@ import { getProjects } from "@/lib/api";
 import { BaseProps } from "@/types/section";
 import { ProjectSectionClient } from "@/components/projects/ProjectSectionClient";
 import { getTranslation } from "@/app/i18n/server";
-import styles from "@/styles/modules/Projects.module.scss";
+import styles from "@/styles/modules/projects.module.scss";
 import { Project as SectionProject } from "@/types/section";
 import { Project as ApiProject } from "@/types/project";
 

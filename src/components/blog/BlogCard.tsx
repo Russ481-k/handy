@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FiClock, FiCalendar } from "react-icons/fi";
 import { BlogPost } from "@/types/blog";
-import styles from "@/styles/modules/BlogCard.module.scss";
+import styles from "@/styles/modules/blog-card.module.scss";
 import { useState } from "react";
 import BaseCard from "../common/BaseCard";
 

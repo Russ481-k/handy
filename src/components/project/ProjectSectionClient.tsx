@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ProjectCard } from "./ProjectCard";
 import { Project } from "@/types/project";
-import styles from "@/styles/modules/ProjectSection.module.scss";
+import styles from "@/styles/modules/project-section.module.scss";
 
 interface ProjectSectionClientProps {
   projects: Project[];

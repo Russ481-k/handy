@@ -3,7 +3,7 @@
 import ThemeSwitch from "./ThemeSwitch";
 import LanguageSwitch from "./LanguageSwitch";
 import ScrollToTop from "./ScrollToTop";
-import styles from "@/styles/modules/FloatingButtons.module.scss";
+import styles from "@/styles/modules/floating-buttons.module.scss";
 
 export default function FloatingButtons() {
   return (

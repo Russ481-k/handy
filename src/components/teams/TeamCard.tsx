@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import styles from "@/styles/modules/TeamCard.module.scss";
+import styles from "@/styles/modules/team-card.module.scss";
 import { useState } from "react";
 import BaseCard from "../common/BaseCard";
 import { Teams } from "@/types/section";

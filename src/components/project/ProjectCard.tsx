@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { Project } from "@/types/project";
-import styles from "@/styles/modules/ProjectCard.module.scss";
+import styles from "@/styles/modules/project-card.module.scss";
 import { useState } from "react";
 import BaseCard from "../common/BaseCard";
 

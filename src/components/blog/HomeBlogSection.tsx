@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { BlogPost } from "@/types/blog";
-import styles from "@/styles/modules/HomeBlogSection.module.scss";
+import styles from "@/styles/modules/home-blog-section.module.scss";
 import { BlogCard } from "./BlogCard";
 
 interface HomeBlogSectionProps {

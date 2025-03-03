@@ -5,7 +5,7 @@ import { Features } from "@/components/features/Features";
 import { Teams } from "@/components/teams/Teams";
 import { BaseProps } from "@/types/section";
 import { getTranslation } from "@/app/i18n/server";
-import styles from "@/styles/modules/Home.module.scss";
+import styles from "@/styles/modules/home.module.scss";
 
 interface HomePageProps {
   params: Promise<BaseProps>;
