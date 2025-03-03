@@ -1,8 +1,8 @@
 import { getProjects } from "@/lib/api";
 import { BaseProps } from "@/types/section";
-import { ProjectSectionClient } from "@/components/projects/ProjectSectionClient";
+import { ProjectSectionWrapper } from "@/components/project/ProjectSectionWrapper";
 import { getTranslation } from "@/app/i18n/server";
-import styles from "@/styles/modules/projects.module.scss";
+import styles from "@/styles/modules/project.module.scss";
 import { Project as SectionProject } from "@/types/section";
 import { Project as ApiProject } from "@/types/project";
 
@@ -38,7 +38,7 @@ export default async function ProjectsPage({
         <p>{titles.description}</p>
       </section>
       <div className={styles.content}>
-        <ProjectSectionClient projects={projects} titles={titles} />
+        <ProjectSectionWrapper projects={projects} lng={lng} />
       </div>
     </div>
   );

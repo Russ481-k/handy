@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { FiGithub, FiExternalLink } from "react-icons/fi";
-import { Project } from "@/types/project";
+import { Project } from "@/types/section";
 import styles from "@/styles/modules/project-card.module.scss";
 import { useState } from "react";
 import BaseCard from "../common/BaseCard";
@@ -27,7 +27,7 @@ export function ProjectCard({
 
   // 이미지 URL이 없는 경우도 fallbackImage 사용
   const showFallbackImage =
-    imageError || !project.thumbnail || project.thumbnail === "";
+    imageError || !project.image || project.image === "";
 
   return (
     <BaseCard className={containerClass}>
@@ -38,7 +38,7 @@ export function ProjectCard({
           </div>
         ) : (
           <Image
-            src={project.thumbnail}
+            src={project.image}
             alt={project.title}
             fill
             className={styles.image}
@@ -50,9 +50,9 @@ export function ProjectCard({
         <h3 className={styles.title}>{project.title}</h3>
         <p className={styles.description}>{project.description}</p>
 
-        {project.technologies && project.technologies.length > 0 && (
+        {project.tags && project.tags.length > 0 && (
           <div className={styles.technologies}>
-            {project.technologies.map((tech) => (
+            {project.tags.map((tech) => (
               <span key={tech} className={styles.technology}>
                 {tech}
               </span>
@@ -61,9 +61,9 @@ export function ProjectCard({
         )}
 
         <div className={styles.links}>
-          {project.githubUrl && (
+          {project.github && (
             <a
-              href={project.githubUrl}
+              href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
@@ -73,9 +73,9 @@ export function ProjectCard({
               <span>GitHub</span>
             </a>
           )}
-          {project.demoUrl && (
+          {project.demo && (
             <a
-              href={project.demoUrl}
+              href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
