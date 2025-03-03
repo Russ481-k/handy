@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@use "../../styles/mixins" as mix;
 
 .main {
   min-height: 100vh;
@@ -46,7 +46,7 @@
     }
   }
 
-  @include mobile {
+  @include mix.mobile {
     padding: 4rem 1rem;
 
     .heroContent .heroTitle {
@@ -95,7 +95,7 @@
     margin-bottom: 1.5rem;
   }
 
-  @include mobile {
+  @include mix.mobile {
     margin: -2rem 1rem 0;
 
     .articleContent {
@@ -111,7 +111,7 @@
   position: relative;
   overflow: hidden;
 
-  @include mobile {
+  @include mix.mobile {
     height: 250px;
   }
 }
@@ -170,21 +170,21 @@
     font-weight: 700;
   }
 
-  @include mobile {
+  @include mix.mobile {
     padding: 4rem 1rem;
   }
 }
 
 .relatedGrid {
-  @include responsive-grid;
+  @include mix.responsive-grid;
 
-  @include mobile {
+  @include mix.mobile {
     grid-template-columns: 1fr;
   }
 }
 
 .relatedPost {
-  @include card-style;
+  @include mix.card-style;
 
   &:hover {
     .relatedImage {
@@ -194,7 +194,7 @@
 }
 
 .relatedImageContainer {
-  @include image-container(200px);
+  @include mix.image-container(200px);
 }
 
 .relatedImage {

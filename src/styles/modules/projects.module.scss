@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@use "../../styles/mixins" as mix;
 
 .container {
   min-height: 100vh;
@@ -30,7 +30,7 @@
     line-height: 1.6;
   }
 
-  @include mobile {
+  @include mix.mobile {
     padding: 2rem;
 
     h1 {
@@ -48,7 +48,7 @@
   max-width: 1200px;
   margin: 0 auto;
 
-  @include mobile {
+  @include mix.mobile {
     padding: 4rem 1rem;
   }
 }
@@ -59,7 +59,7 @@
   gap: 1rem;
   margin-bottom: 4rem;
 
-  @include mobile {
+  @include mix.mobile {
     flex-wrap: wrap;
     gap: 0.5rem;
   }
@@ -87,18 +87,18 @@
     color: white;
   }
 
-  @include mobile {
+  @include mix.mobile {
     padding: 0.5rem 1rem;
     font-size: 0.75rem;
   }
 }
 
 .grid {
-  @include responsive-grid;
+  @include mix.responsive-grid;
 }
 
 .projectCard {
-  @include card-style;
+  @include mix.card-style;
 
   &:hover {
     .image {

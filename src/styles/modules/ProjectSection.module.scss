@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@use "../../styles/mixins" as mix;
 
 .section {
   padding: 6rem 0;
@@ -32,15 +32,15 @@
 }
 
 .grid {
-  @include responsive-grid;
+  @include mix.responsive-grid;
 }
 
 .project {
-  @include card-style;
+  @include mix.card-style;
 }
 
 .imageWrapper {
-  @include image-container(225px);
+  @include mix.image-container(225px);
   margin-bottom: 1rem;
 }
 

@@ -1,11 +1,11 @@
-@import "../../styles/mixins.scss";
+@use "../../styles/mixins" as mix;
 
 .card {
-  @include card-style(100%);
+  @include mix.card-style(100%);
 }
 
 .imageContainer {
-  @include image-container(12rem);
+  @include mix.image-container(12rem);
 }
 
 .image {
