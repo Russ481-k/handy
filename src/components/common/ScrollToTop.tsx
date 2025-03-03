@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { IoArrowUpOutline } from "react-icons/io5";
-import styles from "@/styles/modules/floating-buttons.module.scss";
+import styles from "@/styles/modules/ui-controls.module.scss";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);

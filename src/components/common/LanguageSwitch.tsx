@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import styles from "@/styles/modules/language-switch.module.scss";
+import styles from "@/styles/modules/ui-controls.module.scss";
 
 export default function LanguageSwitch() {
   const pathname = usePathname();
