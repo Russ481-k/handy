@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@use "../../styles/mixins" as mix;
 
 .main {
   min-height: 100vh;
@@ -55,7 +55,7 @@
 
 .infoItem {
   padding: 2rem;
-  @include card-style;
+  @include mix.card-style;
 
   svg {
     font-size: 2rem;
@@ -184,4 +184,10 @@
   .infoItem {
     padding: 1.5rem;
   }
+}
+
+.contactForm {
+  @include mix.card-style;
+  padding: 2rem;
+  // ... existing code ...
 }

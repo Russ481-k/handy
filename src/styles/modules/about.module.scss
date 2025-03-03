@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@use "../../styles/mixins" as mix;
 
 .main {
   min-height: 100vh;
@@ -88,7 +88,7 @@
     width: 45%;
     padding: 2rem;
     margin-top: 3rem;
-    @include card-style;
+    @include mix.card-style;
 
     &:hover {
       // card-style에 포함된 transform과 hover-border-color는 유지
@@ -142,7 +142,7 @@
 .valueCard {
   padding: 2rem;
   text-align: center;
-  @include card-style;
+  @include mix.card-style;
 
   .icon {
     font-size: 2.5rem;
@@ -173,7 +173,7 @@
 }
 
 .card {
-  @include card-style;
+  @include mix.card-style;
 }
 
 @media (max-width: 768px) {
