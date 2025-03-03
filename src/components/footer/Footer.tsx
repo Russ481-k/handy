@@ -8,9 +8,11 @@ export default async function Footer({ lng }: { lng: string }) {
     slogan: t("footer.slogan"),
     links: {
       social: [
-        { name: "GitHub", url: "https://github.com" },
-        { name: "Twitter", url: "https://twitter.com" },
-        { name: "LinkedIn", url: "https://linkedin.com" },
+        { name: "GitHub", url: "https://github.com", icon: "github" },
+        { name: "Twitter", url: "https://twitter.com", icon: "twitter" },
+        { name: "LinkedIn", url: "https://linkedin.com", icon: "linkedin" },
+        { name: "Instagram", url: "https://instagram.com", icon: "instagram" },
+        { name: "Email", url: "mailto:contact@handy.com", icon: "mail" },
       ],
       legal: [
         { name: t("footer.privacyPolicy"), url: `/${lng}/privacy` },

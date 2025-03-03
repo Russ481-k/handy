@@ -8,15 +8,13 @@ import { BlogCard } from "./BlogCard";
 
 interface BlogSectionClientProps {
   posts: BlogPost[];
-  title: string;
-  subtitle: string;
+  titles: {
+    title: string;
+    description: string;
+  };
 }
 
-export function BlogSectionClient({
-  posts,
-  title,
-  subtitle,
-}: BlogSectionClientProps) {
+export function BlogSectionClient({ posts, titles }: BlogSectionClientProps) {
   const [activeCategory, setActiveCategory] = useState("all");
 
   const categories = [
@@ -33,31 +31,16 @@ export function BlogSectionClient({
       : posts.filter((post) => post.category === activeCategory);
 
   return (
-    <main className={styles.main}>
-      <section className={styles.hero}>
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {title}
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          {subtitle}
-        </motion.p>
-      </section>
+    <section className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <motion.h2 className={styles.title}>{titles.title}</motion.h2>
+          <motion.p className={styles.description}>
+            {titles.description}
+          </motion.p>
+        </div>
 
-      <section className={styles.content}>
-        <motion.div
-          className={styles.categories}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+        <div className={styles.categories}>
           {categories.map((category) => (
             <button
               key={category.id}
@@ -69,22 +52,14 @@ export function BlogSectionClient({
               {category.label}
             </button>
           ))}
-        </motion.div>
-
-        <div className={styles.grid}>
-          {filteredPosts.map((post, index) => (
-            <motion.div
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <BlogCard post={post} />
-            </motion.div>
-          ))}
         </div>
-      </section>
-    </main>
+
+        <motion.div className={styles.grid}>
+          {filteredPosts.map((post, index) => (
+            <BlogCard key={post.id || index} post={post} />
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 }

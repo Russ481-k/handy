@@ -4,7 +4,7 @@
   --accent-color: #0ea5e9; // 밝은 하늘색
   --muted-color: #64748b; // 중간 톤의 회색
   --background-color: #ffffff;
-  --header-background-rgb: 255, 255, 255;
+  --background-secondary: #f5f5f5;
   --text-color: #333333;
   --card-shadow: rgba(0, 0, 0, 0.05);
   --border-color: #eaeaea;
@@ -15,6 +15,7 @@
     235,
     0.15
   ); // 라이트 모드용 연한 primary-color
+  --header-background-rgb: 255, 255, 255;
   --header-background: rgba(255, 255, 255, 0.9);
   --header-blur: 1px;
   padding-top: 64px; // Header height
@@ -143,7 +144,8 @@
   --muted-color: #d27b9d; // 더 부드러운 연한 핑크
 
   --text-color: #e0e0e0;
-  --background-color: #121212;
+  --background-color: #000000;
+  --background-secondary: #0c0c0c;
   --border-color: #333333;
 
   --primary-color-rgb: 97, 12, 159; // #610C9F

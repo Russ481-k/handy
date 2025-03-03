@@ -9,8 +9,10 @@ interface BlogSectionProps extends BaseProps {
 
 export async function BlogSection({ posts, lng }: BlogSectionProps) {
   const { t } = await getTranslation(lng, "common");
-  const title = t("blog_page.title");
-  const subtitle = t("blog_page.subtitle");
+  const title = {
+    title: t("blog_page.title"),
+    description: t("blog_page.subtitle"),
+  };
 
-  return <BlogSectionClient posts={posts} title={title} subtitle={subtitle} />;
+  return <BlogSectionClient posts={posts} titles={title} />;
 }

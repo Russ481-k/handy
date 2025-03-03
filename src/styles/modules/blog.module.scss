@@ -1,6 +1,6 @@
 @use "../../styles/mixins" as mix;
 
-.main {
+.container {
   min-height: 100vh;
 }
 
@@ -47,32 +47,46 @@
   padding: 6rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
+}
 
-  @include mix.mobile {
-    padding: 4rem 1rem;
-  }
+.section {
+  padding: 4rem 0;
+  background-color: var(--background-primary);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.description {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .categories {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
-  margin-bottom: 4rem;
-
-  @include mix.mobile {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+  gap: 0.75rem;
+  margin-bottom: 3rem;
 }
 
 .categoryButton {
-  padding: 0.75rem 1.5rem;
-  border: 1px solid var(--border-color);
+  padding: 0.5rem 1.25rem;
   border-radius: 0;
-  color: var(--text-color);
-  font-size: 0.875rem;
-  transition: transform 0.25s ease, border-color 0.25s ease,
-    background-color 0.25s ease;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     transform: translateY(-2px);
@@ -80,7 +94,7 @@
   }
 
   &.active {
-    background: var(--primary-color);
+    background-color: var(--primary-color);
     border-color: var(--primary-color);
     color: white;
   }
@@ -92,7 +106,17 @@
 }
 
 .grid {
-  @include mix.responsive-grid;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .post {

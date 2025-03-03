@@ -1,6 +1,7 @@
 export interface FooterLink {
   name: string;
   url: string;
+  icon?: string;
 }
 
 export interface FooterData {
