@@ -106,9 +106,7 @@ export default function TranslatedHeader({ lng }: { lng: string }) {
           <nav
             className={styles.nav}
             style={{
-              backgroundColor: isMenuOpen
-                ? `rgba(var(--header-background-rgb), 0.95)`
-                : "transparent",
+              backgroundColor: "transparent",
               backdropFilter: isMenuOpen ? "blur(10px)" : "none",
             }}
           >
