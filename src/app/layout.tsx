@@ -8,6 +8,9 @@ export const metadata: Metadata = {
     default: "Handy",
   },
   description: "Handy - Innovation for Everyone",
+  verification: {
+    google: "WsZ6OUTnhbmH4OgcCKXIgu95GMydkZGl6FFLrSEXFRo",
+  },
 };
 
 export default function RootLayout({
