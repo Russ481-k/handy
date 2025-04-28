@@ -223,15 +223,15 @@
       "title": "Contact Information",
       "address": {
         "title": "Address",
-        "value": "123 Teheran-ro, Gangnam-gu, Seoul"
+        "value": "5th Floor, 404 Chungnyeol-daero, Dongnae-gu, Busan"
       },
       "email": {
         "title": "Email",
-        "value": "contact@company.com"
+        "value": "handy@handylab.co.kr"
       },
       "phone": {
         "title": "Phone",
-        "value": "+82-2-1234-5678"
+        "value": "070-4418-1383"
       }
     }
   },

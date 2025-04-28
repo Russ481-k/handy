@@ -223,15 +223,15 @@
       "title": "연락처 정보",
       "address": {
         "title": "주소",
-        "value": "서울특별시 강남구 테헤란로 123"
+        "value": "부산시 동래구 충렬대로 404, 5층"
       },
       "email": {
         "title": "이메일",
-        "value": "contact@company.com"
+        "value": "handy@handylab.co.kr"
       },
       "phone": {
         "title": "전화",
-        "value": "02-1234-5678"
+        "value": "070-4418-1383"
       }
     }
   },
