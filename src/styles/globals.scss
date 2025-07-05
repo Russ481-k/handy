@@ -142,16 +142,21 @@
   --secondary-color: #6e4b8f; // 더 부드러운 보라
   --accent-color: #8b4b82; // 더 부드러운 자주
   --muted-color: #d27b9d; // 더 부드러운 연한 핑크
-
   --text-color: #e0e0e0;
   --background-color: #000000;
   --background-secondary: #0c0c0c;
   --border-color: #333333;
-
-  --primary-color-rgb: 97, 12, 159; // #610C9F
+  --border-color-light: #222222;
+  --hover-border-color: rgba(
+    168,
+    69,
+    120,
+    0.25
+  ); // 다크 모드용 연한 primary-color
   --header-background-rgb: 18, 18, 18;
   --header-background: rgba(18, 18, 18, 0.9);
   --header-blur: 10px;
+  --primary-color-rgb: 97, 12, 159; // #610C9F
 
   --gradient-home: conic-gradient(
     from 45deg at 50% 50%,
@@ -223,14 +228,6 @@
     color-mix(in srgb, var(--secondary-color) 15%, var(--accent-color) 85%),
     var(--accent-color)
   );
-  --border-color: #333333;
-  --border-color-light: #222222;
-  --hover-border-color: rgba(
-    168,
-    69,
-    120,
-    0.25
-  ); // 다크 모드용 연한 primary-color
 }
 
 html,

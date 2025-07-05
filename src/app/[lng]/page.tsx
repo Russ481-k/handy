@@ -3,6 +3,7 @@ import { ProjectSectionWrapper } from "@/components/project/ProjectSectionWrappe
 import { HomeBlogSectionWrapper } from "@/components/blog/HomeBlogSectionWrapper";
 import { Features } from "@/components/features/Features";
 import { Teams } from "@/components/teams/Teams";
+import { Hero } from "@/components/hero/Hero";
 import { BaseProps } from "@/types/section";
 import { getTranslation } from "@/app/i18n/server";
 import styles from "@/styles/modules/home.module.scss";
@@ -32,10 +33,7 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <div className={styles.home}>
       <main className={styles.main}>
-        <section className={styles.hero}>
-          <h1>{t("hero.title")}</h1>
-          <p>{t("hero.description")}</p>
-        </section>
+        <Hero title={t("hero.title")} description={t("hero.description")} />
         <div className={styles.content}>
           <Features lng={lng} />
           <Teams lng={lng} />

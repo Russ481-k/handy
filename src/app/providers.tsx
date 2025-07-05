@@ -1,26 +1,15 @@
 "use client";
 
-import { PropsWithChildren, useEffect, useState } from "react";
 import { ThemeProvider } from "next-themes";
 
-export function Providers({ children }: PropsWithChildren) {
-  // Add a client-side-only rendering check
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
       attribute="data-theme"
-      defaultTheme="light"
+      defaultTheme="dark"
       enableSystem={false}
-      disableTransitionOnChange
+      disableTransitionOnChange={false}
+      storageKey="handy-theme"
     >
       {children}
     </ThemeProvider>

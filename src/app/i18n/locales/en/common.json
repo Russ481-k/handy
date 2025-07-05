@@ -1,6 +1,6 @@
 {
   "hero": {
-    "title": "Handy",
+    "title": "HANDY",
     "description": "Creating a better future with innovative solutions"
   },
   "features": {
@@ -149,28 +149,46 @@
         "description": "Real-time analytics solution using big data",
         "category": "ai",
         "image": "/projects/ai-platform.jpg",
-        "tags": ["AI", "Big Data", "React", "Python"]
+        "tags": [
+          "AI",
+          "Big Data",
+          "React",
+          "Python"
+        ]
       },
       {
         "title": "Smart Commerce Platform",
         "description": "AI-powered personalized shopping experience",
         "category": "web",
         "image": "/projects/commerce.jpg",
-        "tags": ["Next.js", "Node.js", "AWS"]
+        "tags": [
+          "Next.js",
+          "Node.js",
+          "AWS"
+        ]
       },
       {
         "title": "Healthcare Mobile App",
         "description": "Personalized health management solution",
         "category": "mobile",
         "image": "/projects/healthcare.jpg",
-        "tags": ["React Native", "Firebase", "iOS", "Android"]
+        "tags": [
+          "React Native",
+          "Firebase",
+          "iOS",
+          "Android"
+        ]
       },
       {
         "title": "Real-time Collaboration Tool",
         "description": "Real-time project management solution for teams",
         "category": "web",
         "image": "/projects/collaboration.jpg",
-        "tags": ["Vue.js", "WebSocket", "MongoDB"]
+        "tags": [
+          "Vue.js",
+          "WebSocket",
+          "MongoDB"
+        ]
       }
     ]
   },
@@ -193,7 +211,11 @@
         "date": "2024-03-01",
         "readTime": "5 min read",
         "thumbnail": "/blog/ai-future.jpg",
-        "tags": ["AI", "Machine Learning", "Technology"]
+        "tags": [
+          "AI",
+          "Machine Learning",
+          "Technology"
+        ]
       },
       {
         "title": "Building Modern Web Applications",
@@ -203,7 +225,11 @@
         "date": "2024-02-28",
         "readTime": "7 min read",
         "thumbnail": "/blog/web-dev.jpg",
-        "tags": ["Web Development", "JavaScript", "React"]
+        "tags": [
+          "Web Development",
+          "JavaScript",
+          "React"
+        ]
       }
     ]
   },

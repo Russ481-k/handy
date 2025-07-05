@@ -14,7 +14,11 @@ export default function ThemeSwitch() {
   }, []);
 
   if (!mounted) {
-    return null;
+    return (
+      <button className={styles.floatingButton} aria-label="Loading theme">
+        <span className="opacity-0">...</span>
+      </button>
+    );
   }
 
   const handleThemeChange = () => {
@@ -25,9 +29,13 @@ export default function ThemeSwitch() {
     <button
       onClick={handleThemeChange}
       className={styles.floatingButton}
-      aria-label="Toggle Theme"
+      aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
     >
-      {theme === "dark" ? <IoMoonOutline /> : <IoSunnyOutline />}
+      {theme === "dark" ? (
+        <IoSunnyOutline className="w-5 h-5" />
+      ) : (
+        <IoMoonOutline className="w-5 h-5" />
+      )}
     </button>
   );
 }
