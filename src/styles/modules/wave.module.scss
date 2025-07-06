@@ -1,0 +1,156 @@
+.waveContainer {
+  position: relative;
+  width: 100%;
+  height: 10vh;
+  min-height: 200px;
+  max-height: 350px;
+  vector-effect: non-scaling-stroke;
+  fill: none;
+}
+
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.parallax > use {
+  /* 2개의 애니메이션을 동시에 적용: 수평 이동(move-forever)과 수직 상호작용(interact-wave) */
+  animation-name: move-forever, interact-wave;
+  animation-timing-function: linear, ease-in-out; /* 수평은 등속, 수직은 리드미컬하게 */
+  animation-iteration-count: infinite;
+
+  stroke: url(#wave-gradient);
+  stroke-width: 0.06px;
+  vector-effect: non-scaling-stroke;
+}
+
+/* 
+  가장 안정적인 SCSS를 통해 그라데이션 색상을 직접 적용합니다.
+  호환성 문제를 해결하기 위해 CSS 변수 대신 실제 색상 값을 사용합니다. 
+*/
+.waveGradientEdge {
+  stop-color: rgba(#2563eb, 0.5); /* 라이트 모드 주조색 (반투명) */
+}
+.waveGradientMiddle {
+  stop-color: rgba(#2563eb, 1); /* 라이트 모드 주조색 (불투명) */
+}
+
+[data-theme="dark"] {
+  .waveGradientEdge {
+    stop-color: rgba(#a84578, 0.5); /* 다크 모드 주조색 (반투명) */
+  }
+  .waveGradientMiddle {
+    stop-color: rgba(#a84578, 1); /* 다크 모드 주조색 (불투명) */
+  }
+}
+
+/* 21개 라인의 다이나믹하고 '규칙적인' 애니메이션 설정 */
+/* 모든 라인의 수평 이동(animation-duration 첫번째 값) 속도를 25s로 통일하여 규칙성 유지 */
+.parallax > use:nth-child(1) {
+  animation-duration: 25s, 7s; /* 수평, 수직 애니메이션 시간 */
+  animation-delay: 0s, 0s; /* 수평, 수직 애니메이션 지연 */
+}
+.parallax > use:nth-child(2) {
+  animation-duration: 25s, 7s;
+  animation-delay: -0.5s, -0.2s;
+}
+.parallax > use:nth-child(3) {
+  animation-duration: 25s, 7s;
+  animation-delay: -1s, -0.4s;
+}
+.parallax > use:nth-child(4) {
+  animation-duration: 25s, 7s;
+  animation-delay: -1.5s, -0.6s;
+}
+.parallax > use:nth-child(5) {
+  animation-duration: 25s, 7s;
+  animation-delay: -2s, -0.8s;
+}
+.parallax > use:nth-child(6) {
+  animation-duration: 25s, 7s;
+  animation-delay: -2.5s, -1s;
+}
+.parallax > use:nth-child(7) {
+  animation-duration: 25s, 7s;
+  animation-delay: -3s, -1.2s;
+}
+.parallax > use:nth-child(8) {
+  animation-duration: 25s, 7s;
+  animation-delay: -3.5s, -1.4s;
+}
+.parallax > use:nth-child(9) {
+  animation-duration: 25s, 7s;
+  animation-delay: -4s, -1.6s;
+}
+.parallax > use:nth-child(10) {
+  animation-duration: 25s, 7s;
+  animation-delay: -4.5s, -1.8s;
+}
+.parallax > use:nth-child(11) {
+  animation-duration: 25s, 7s;
+  animation-delay: -5s, -2s;
+}
+.parallax > use:nth-child(12) {
+  animation-duration: 25s, 7s;
+  animation-delay: -5.5s, -2.2s;
+}
+.parallax > use:nth-child(13) {
+  animation-duration: 25s, 7s;
+  animation-delay: -6s, -2.4s;
+}
+.parallax > use:nth-child(14) {
+  animation-duration: 25s, 7s;
+  animation-delay: -6.5s, -2.6s;
+}
+.parallax > use:nth-child(15) {
+  animation-duration: 25s, 7s;
+  animation-delay: -7s, -2.8s;
+}
+.parallax > use:nth-child(16) {
+  animation-duration: 25s, 7s;
+  animation-delay: -7.5s, -3s;
+}
+.parallax > use:nth-child(17) {
+  animation-duration: 25s, 7s;
+  animation-delay: -8s, -3.2s;
+}
+.parallax > use:nth-child(18) {
+  animation-duration: 25s, 7s;
+  animation-delay: -8.5s, -3.4s;
+}
+.parallax > use:nth-child(19) {
+  animation-duration: 25s, 7s;
+  animation-delay: -9s, -3.6s;
+}
+.parallax > use:nth-child(20) {
+  animation-duration: 25s, 7s;
+  animation-delay: -9.5s, -3.8s;
+}
+.parallax > use:nth-child(21) {
+  animation-duration: 25s, 7s;
+  animation-delay: -10s, -4s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+@keyframes interact-wave {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

@@ -7,16 +7,19 @@
     "title": "주요 특징",
     "items": {
       "innovation": {
+        "icon": "rocket",
         "title": "혁신적인 기술",
-        "description": "최신 기술을 활용하여 미래 지향적인 솔루션을 제공합니다"
+        "description": "최신 기술을 활용하여 미래 지향적인 솔루션을 제공합니다."
       },
       "customer": {
+        "icon": "heart",
         "title": "고객 중심",
-        "description": "고객의 니즈를 최우선으로 생각하며 최적의 서비스를 제공합니다"
+        "description": "고객 만족을 최우선으로 생각하며, 최고의 지원을 제공합니다."
       },
       "growth": {
-        "title": "빠른 성장",
-        "description": "지속적인 혁신과 개선을 통해 빠르게 성장하고 있습니다"
+        "icon": "trending-up",
+        "title": "지속적인 성장",
+        "description": "변화하는 시장에 빠르게 적응하며, 끊임없이 발전합니다."
       }
     }
   },
@@ -235,7 +238,7 @@
   },
   "contact_page": {
     "title": "문의하기",
-    "subtitle": "프로젝트나 협업에 대해 이야기하고 싶으신가요?",
+    "description": "프로젝트나 협업에 대해 이야기하고 싶으신가요?",
     "form": {
       "name": "이름",
       "email": "이메일",

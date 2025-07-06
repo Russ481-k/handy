@@ -14,7 +14,7 @@ export interface SectionProps {
 }
 
 export interface Feature {
-  icon: "rocket" | "heart" | "trending-up";
+  icon: "rocket" | "heart" | "trending-up" | "people" | "shield";
   title: string;
   description: string;
 }

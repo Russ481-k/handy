@@ -4,19 +4,22 @@
     "description": "Creating a better future with innovative solutions"
   },
   "features": {
-    "title": "Key Features",
+    "title": "Features",
     "items": {
       "innovation": {
+        "icon": "rocket",
         "title": "Innovative Technology",
-        "description": "Providing future-oriented solutions using the latest technology"
+        "description": "We provide future-oriented solutions using the latest technologies."
       },
       "customer": {
-        "title": "Customer Centric",
-        "description": "Providing optimal service with customer needs as our top priority"
+        "icon": "heart",
+        "title": "Customer-Centric",
+        "description": "We prioritize customer satisfaction and provide the best support."
       },
       "growth": {
-        "title": "Rapid Growth",
-        "description": "Growing rapidly through continuous innovation and improvement"
+        "icon": "trending-up",
+        "title": "Continuous Growth",
+        "description": "We adapt quickly to the changing market and constantly evolve."
       }
     }
   },
@@ -235,7 +238,7 @@
   },
   "contact_page": {
     "title": "Contact Us",
-    "subtitle": "Want to talk about a project or collaboration?",
+    "description": "Want to talk about a project or collaboration?",
     "form": {
       "name": "Name",
       "email": "Email",

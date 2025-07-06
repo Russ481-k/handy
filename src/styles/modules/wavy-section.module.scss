@@ -1,0 +1,29 @@
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.waveTop,
+.waveBottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  pointer-events: none; /* 웨이브가 마우스 이벤트를 방해하지 않도록 함 */
+}
+
+.waveTop {
+  top: 0;
+  transform: translateY(-20%);
+}
+
+.waveBottom {
+  bottom: 0;
+  /* 비대칭 효과 */
+  transform: scaleX(-1) scaleY(-1) translateY(-20%);
+}
+
+.content {
+  position: relative;
+  z-index: 1; /* 콘텐츠가 웨이브 위에 오도록 함 */
+}

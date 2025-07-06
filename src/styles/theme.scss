@@ -1,3 +1,5 @@
+@use "sass:color";
+
 // 라이트모드(기본값)
 .light-theme {
   // ... existing code ...
@@ -9,7 +11,12 @@
     235,
     0.15
   ); // 라이트 모드용 연한 primary-color
+  --background-secondary-color: #{$gray-100};
   // ... existing code ...
+
+  // Accent colors
+  --accent-color: #{$primary-color};
+  --accent-color-rgb: #{hex-to-rgb($primary-color)};
 }
 
 // 다크모드
@@ -23,5 +30,13 @@
     120,
     0.25
   ); // 다크 모드용 연한 primary-color
+  --background-secondary-color: #{$gray-800};
   // ... existing code ...
+
+  --text-secondary: #{$gray-400};
+  --text-disabled: #{$gray-600};
+
+  // Accent colors
+  --accent-color: #{$primary-color-dark};
+  --accent-color-rgb: #{hex-to-rgb($primary-color-dark)};
 }

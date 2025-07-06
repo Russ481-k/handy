@@ -4,6 +4,7 @@ import { BaseProps } from "@/types/section";
 import { BlogSectionClient } from "@/components/blog/BlogSectionClient";
 import styles from "@/styles/modules/blog.module.scss";
 import { Hero } from "@/components/hero/Hero";
+import { WavySection } from "@/components/common/WavySection";
 
 export default async function BlogPage({
   params,
@@ -23,9 +24,14 @@ export default async function BlogPage({
   return (
     <div className={styles.container}>
       <Hero title={t("blog.title")} description={t("blog.description")} />
-      <div className={styles.content}>
-        <BlogSectionClient posts={posts} titles={titles} />
-      </div>
+      <WavySection
+        className={styles.waveTop}
+        contentClassName={styles.container}
+      >
+        <div className={styles.content}>
+          <BlogSectionClient posts={posts} titles={titles} />
+        </div>
+      </WavySection>
     </div>
   );
 }

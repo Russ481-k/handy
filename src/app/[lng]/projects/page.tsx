@@ -4,6 +4,8 @@ import { Project as SectionProject } from "@/types/section";
 import { Project as ApiProject } from "@/types/project";
 import { Hero } from "@/components/hero/Hero";
 import { getProjects } from "@/lib/api";
+import { WavySection } from "@/components/common/WavySection";
+import styles from "@/styles/modules/about.module.scss";
 
 interface ProjectsPageProps {
   params: {
@@ -34,7 +36,12 @@ export default async function ProjectsPage({
         title={t("projects.title")}
         description={t("projects.description")}
       />
-      <ProjectSectionWrapper lng={lng} projects={projects} />
+      <WavySection
+        className={styles.waveTop}
+        contentClassName={styles.container}
+      >
+        <ProjectSectionWrapper lng={lng} projects={projects} />
+      </WavySection>
     </main>
   );
 }

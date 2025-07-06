@@ -1,27 +1,29 @@
 import { getTranslation } from "@/app/i18n/server";
-import { FeaturesClient } from "./FeaturesClient";
 import { BaseProps, Feature } from "@/types/section";
+import { FeaturesClient } from "./FeaturesClient";
 
-export async function Features({ lng }: BaseProps) {
+interface FeaturesProps extends BaseProps {
+  title?: string;
+  features?: Feature[];
+}
+
+export async function Features({
+  lng,
+  title: customTitle,
+  features: customFeatures,
+}: FeaturesProps) {
   const { t } = await getTranslation(lng, "common");
 
-  const features: Feature[] = [
-    {
-      icon: "rocket",
-      title: t("features.items.innovation.title"),
-      description: t("features.items.innovation.description"),
-    },
-    {
-      icon: "heart",
-      title: t("features.items.customer.title"),
-      description: t("features.items.customer.description"),
-    },
-    {
-      icon: "trending-up",
-      title: t("features.items.growth.title"),
-      description: t("features.items.growth.description"),
-    },
-  ];
+  const featuresData =
+    customFeatures ||
+    Object.values(
+      t("features.items", { returnObjects: true }) as unknown as Record<
+        string,
+        Feature
+      >
+    );
 
-  return <FeaturesClient features={features} title={t("features.title")} />;
+  const title = customTitle || t("features.title");
+
+  return <FeaturesClient features={featuresData} title={title} />;
 }

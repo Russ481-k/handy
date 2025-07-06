@@ -99,7 +99,7 @@
 
 .projectCard {
   @include mix.card-style;
-
+  z-index: 1;
   &:hover {
     .image {
       transform: scale(1.05);
