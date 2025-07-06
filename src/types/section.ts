@@ -34,4 +34,11 @@ export interface Project {
   demo?: string;
 }
 
+export interface ValueItem {
+  icon: ReactElement;
+  title: string;
+  description: string;
+}
+
 import { BlogPost } from "@/types";
+import { ReactElement } from "react";

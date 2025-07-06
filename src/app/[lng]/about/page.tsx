@@ -10,19 +10,20 @@ import {
 import type { CustomTypeOptions } from "@/app/i18n/types";
 import { ReactElement } from "react";
 import { use } from "react";
+import { ValueItem } from "@/types/section";
 
 type HistoryItem =
   CustomTypeOptions["resources"]["common"]["about_page"]["history"]["items"][number];
-type ValueItem =
-  CustomTypeOptions["resources"]["common"]["about_page"]["values"]["items"][number];
 
-export default function AboutPage({
-  params,
-}: {
-  params: Promise<{ lng: string }>;
-}) {
-  const { lng } = use(params);
-  const { t } = useTranslation(lng);
+interface AboutPageProps {
+  params: {
+    lng: string;
+  };
+}
+
+export default async function AboutPage({ params }: AboutPageProps) {
+  const { lng } = params;
+  const { t } = await useTranslation(lng);
 
   const values: (ValueItem & { icon: ReactElement })[] = [
     {
