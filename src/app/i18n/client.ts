@@ -5,7 +5,6 @@ import i18next from "i18next";
 import {
   initReactI18next,
   useTranslation as useTranslationOrg,
-  UseTranslationOptions,
 } from "react-i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
@@ -25,23 +24,17 @@ i18next
   )
   .init({
     ...getOptions(),
-    lng: undefined,
+    lng: undefined, // let detect the language on client side
     detection: {
       order: ["path", "htmlTag", "cookie", "navigator"],
     },
     preload: runsOnServerSide ? languages : [],
   });
 
-type TranslationOptions = UseTranslationOptions & {
-  returnObjects?: boolean;
-  defaultValue?: string;
-  count?: number;
-};
-
 export function useTranslation(
   lng: string,
   ns: keyof CustomTypeOptions["resources"] = "common",
-  options: TranslationOptions & { keyPrefix?: string } = {}
+  options: any = {}
 ) {
   const ret = useTranslationOrg(ns, options);
   const { i18n } = ret;
