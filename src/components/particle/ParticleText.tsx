@@ -10,7 +10,10 @@ import {
 } from "react";
 import { useTheme } from "next-themes";
 
-import { textToParticles } from "@/lib/particleUtils";
+import {
+  textToParticles,
+  generateBackgroundParticles,
+} from "@/lib/particleUtils";
 import ParticleSystem from "./ParticleSystem";
 import { useMouseContext } from "@/contexts/MouseContext";
 import {
@@ -35,6 +38,7 @@ interface ParticleTextProps {
   subText?: string;
   className?: string;
   config?: Partial<ParticleSystemConfig>;
+  showBackgroundParticles?: boolean;
 }
 
 export default function ParticleText({
@@ -42,6 +46,7 @@ export default function ParticleText({
   subText,
   className = "",
   config: userConfig,
+  showBackgroundParticles = false,
 }: ParticleTextProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [particleGroups, setParticleGroups] = useState<ParticleGroup[]>([]);
@@ -112,29 +117,37 @@ export default function ParticleText({
       text: string,
       fontFamily: string,
       containerWidth: number,
-      targetWidthRatio: number = 0.8 // 컨테이너 너비의 80%를 목표로
+      targetWidthRatio: number = 0.9 // 컨테이너 너비의 90%를 목표로
     ): number => {
-      let fontSize = 100; // 시작 크기
       const targetWidth = containerWidth * targetWidthRatio;
+      const MIN_FONT_SIZE = 320; // 폰트 최소 크기 (더 이상 작아지지 않음)
+      const MAX_FONT_SIZE = 400; // 폰트 최대 크기
 
-      // 이진 탐색으로 적절한 폰트 크기 찾기
-      let min = 1;
-      let max = 1000;
-
-      while (min <= max) {
-        fontSize = Math.floor((min + max) / 2);
-        const { width } = measureText(text, fontSize, fontFamily);
-
-        if (Math.abs(width - targetWidth) < 1) {
-          break;
-        } else if (width > targetWidth) {
-          max = fontSize - 1;
-        } else {
-          min = fontSize + 1;
-        }
+      if (!text.trim()) {
+        return 100; // 기본값
       }
 
-      return fontSize;
+      // 기준 폰트 크기(100px)일 때의 너비를 측정
+      const referenceFontSize = 100;
+      const { width: referenceWidth } = measureText(
+        text,
+        referenceFontSize,
+        fontFamily
+      );
+
+      if (referenceWidth === 0) {
+        return referenceFontSize;
+      }
+
+      // 목표 너비에 맞는 폰트 크기를 비례식으로 계산
+      const calculatedFontSize =
+        (targetWidth / referenceWidth) * referenceFontSize;
+
+      // 계산된 폰트 크기를 최소/최대값 사이로 제한
+      return Math.max(
+        MIN_FONT_SIZE,
+        Math.min(calculatedFontSize, MAX_FONT_SIZE)
+      );
     },
     [measureText]
   );
@@ -214,7 +227,7 @@ export default function ParticleText({
         // 메인 텍스트 파티클
         const mainParticles = await generateParticles(text, {
           fontSize: 800,
-          particleDensity: 35,
+          particleDensity: 70,
           position: { x: 0, y: 0.6, z: 0 },
           colors: themeColors,
         });
@@ -234,6 +247,14 @@ export default function ParticleText({
           groups.push({
             particles: subParticles,
             config: { position: { x: 0, y: -0.6, z: 0 } },
+          });
+        }
+
+        if (showBackgroundParticles) {
+          const bgParticles = generateBackgroundParticles(6000, theme);
+          groups.push({
+            particles: bgParticles,
+            config: {},
           });
         }
 
@@ -268,6 +289,7 @@ export default function ParticleText({
     generateParticles,
     config.maxParticles,
     theme, // 테마 변경 시에도 파티클 재생성
+    showBackgroundParticles,
   ]);
 
   // 리사이즈 핸들러 추가

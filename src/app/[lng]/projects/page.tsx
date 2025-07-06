@@ -1,18 +1,21 @@
-import { getProjects } from "@/lib/api";
-import { BaseProps } from "@/types/section";
+import { useTranslation } from "@/app/i18n";
 import { ProjectSectionWrapper } from "@/components/project/ProjectSectionWrapper";
-import { getTranslation } from "@/app/i18n/server";
-import styles from "@/styles/modules/project.module.scss";
 import { Project as SectionProject } from "@/types/section";
 import { Project as ApiProject } from "@/types/project";
+import { Hero } from "@/components/hero/Hero";
+import { getProjects } from "@/lib/api";
+
+interface ProjectsPageProps {
+  params: {
+    lng: string;
+  };
+}
 
 export default async function ProjectsPage({
-  params,
-}: {
-  params: Promise<BaseProps>;
-}) {
-  const { lng } = await params;
-  const { t } = await getTranslation(lng, "common");
+  params: { lng },
+}: ProjectsPageProps) {
+  const { t } = await useTranslation(lng);
+
   const { data: apiProjects } = await getProjects();
 
   // ApiProject 타입을 SectionProject 타입으로 변환
@@ -25,21 +28,13 @@ export default async function ProjectsPage({
     demo: project.demoUrl,
   }));
 
-  // 번역된 텍스트를 titles 객체로 구성
-  const titles = {
-    title: t("projects.title"),
-    description: t("projects.description"),
-  };
-
   return (
-    <div className={styles.container}>
-      <section className={styles.hero}>
-        <h1>{titles.title}</h1>
-        <p>{titles.description}</p>
-      </section>
-      <div className={styles.content}>
-        <ProjectSectionWrapper projects={projects} lng={lng} />
-      </div>
-    </div>
+    <main>
+      <Hero
+        title={t("projects.title")}
+        description={t("projects.description")}
+      />
+      <ProjectSectionWrapper lng={lng} projects={projects} />
+    </main>
   );
 }

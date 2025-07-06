@@ -9,8 +9,8 @@ import {
 } from "react-icons/io5";
 import type { CustomTypeOptions } from "@/app/i18n/types";
 import { ReactElement } from "react";
-import { use } from "react";
 import { ValueItem } from "@/types/section";
+import { Hero } from "@/components/hero/Hero";
 
 type HistoryItem =
   CustomTypeOptions["resources"]["common"]["about_page"]["history"]["items"][number];
@@ -49,12 +49,8 @@ export default async function AboutPage({ params }: AboutPageProps) {
   });
 
   return (
-    <main className={styles.main}>
-      <section className={styles.hero}>
-        <h1>{t("about_page.title")}</h1>
-        <p>{t("about_page.subtitle")}</p>
-      </section>
-
+    <main>
+      <Hero title={t("about.title")} description={t("about.description")} />
       <section className={styles.history}>
         <h2>{t("about_page.history.title")}</h2>
         <div className={styles.timeline}>
@@ -69,13 +65,12 @@ export default async function AboutPage({ params }: AboutPageProps) {
           ))}
         </div>
       </section>
-
       <section className={styles.values}>
-        <h2>{t("about_page.values.title")}</h2>
-        <div className={styles.valueGrid}>
+        <h2>{t("about.values.title")}</h2>
+        <div className="grid">
           {values.map((value, index) => (
-            <div key={index} className={styles.valueCard}>
-              <div className={styles.icon}>{value.icon}</div>
+            <div key={index} className="value-card">
+              <div className="icon">{value.icon}</div>
               <h3>{value.title}</h3>
               <p>{value.description}</p>
             </div>

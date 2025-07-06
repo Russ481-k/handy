@@ -21,7 +21,7 @@ interface HeroProps {
 
 export function Hero({ title, description }: HeroProps) {
   const particleConfig = {
-    maxParticles: 6000,
+    maxParticles: 15000,
     interactionRadius: 1.5,
     returnSpeed: 1.8,
     swirFactorBaselMultiplier: 0.8,
@@ -30,7 +30,7 @@ export function Hero({ title, description }: HeroProps) {
     gradientColors: ["#6366f1", "#8b5cf6", "#d946ef"],
     cameraPosition: { x: 0, y: 0, z: 15 },
     cameraFov: 45,
-    particleSize: 0.15,
+    particleSize: 0.12,
   };
 
   return (
@@ -40,6 +40,7 @@ export function Hero({ title, description }: HeroProps) {
           text={title}
           config={particleConfig}
           className={styles.titleParticles}
+          showBackgroundParticles={true}
         />
         <div className={styles.descriptionWrapper}>
           <p className={styles.description}>{description}</p>

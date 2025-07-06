@@ -13,7 +13,15 @@ import {
   PointsMaterial,
   AdditiveBlending,
   NormalBlending,
+  CustomBlending,
+  SrcAlphaFactor,
+  OneFactor,
+  AddEquation,
   Texture,
+  OrthographicCamera,
+  MeshBasicMaterial,
+  Mesh,
+  PlaneGeometry,
 } from "three";
 import {
   ParticleData,
@@ -43,8 +51,9 @@ const ParticleSystem = ({
   config,
   className = "",
 }: ParticleSystemProps): React.ReactElement => {
-  const { setCamera } = useMouseContext();
+  const { setCamera, scrollY } = useMouseContext();
   const { theme } = useTheme();
+  const scrollYRef = useRef(scrollY);
 
   // 이전 props 값을 저장하기 위한 ref
   const prevPropsRef = useRef({
@@ -62,18 +71,12 @@ const ParticleSystem = ({
     }
     if (mouseData !== prevPropsRef.current.mouseData) {
       changes.push("mouseData changed");
-      console.log("Previous mouseData:", prevPropsRef.current.mouseData);
-      console.log("New mouseData:", mouseData);
     }
     if (config !== prevPropsRef.current.config) {
       changes.push("config changed");
     }
     if (className !== prevPropsRef.current.className) {
       changes.push("className changed");
-    }
-
-    if (changes.length > 0) {
-      console.log("ParticleSystem 렌더링 발생 - 원인:", changes.join(", "));
     }
 
     // 현재 값을 이전 값으로 업데이트
@@ -98,10 +101,21 @@ const ParticleSystem = ({
   const colorsRef = useRef<Float32Array>(
     new Float32Array(particles.length * 3)
   );
+  const opacitiesRef = useRef<Float32Array>(new Float32Array(particles.length));
   const frameIdRef = useRef<number>(0);
   const isInitializedRef = useRef<boolean>(false);
   const lastTimeRef = useRef<number>(performance.now());
   const mouseDataRef = useRef<MouseInteractionData>(mouseData);
+  const initialCameraZ = useRef(config.cameraPosition?.z || 10);
+
+  // 잔상 효과를 위한 오버레이
+  const overlaySceneRef = useRef<Scene | null>(null);
+  const overlayCameraRef = useRef<OrthographicCamera | null>(null);
+  const overlayMaterialRef = useRef<MeshBasicMaterial | null>(null);
+
+  useEffect(() => {
+    scrollYRef.current = scrollY;
+  }, [scrollY]);
 
   // mouseData를 ref로 업데이트
   useEffect(() => {
@@ -117,24 +131,28 @@ const ParticleSystem = ({
       ...mouseData,
       influence,
     };
-
-    console.log("Mouse data received in ParticleSystem:", {
-      position: mouseData.position.toArray(),
-      velocity: mouseData.velocity.toArray(),
-      isActive: mouseData.isActive,
-      influence,
-    });
   }, [mouseData]);
 
   // 애니메이션 함수
   const animate = useCallback(() => {
     try {
-      if (!rendererRef.current || !sceneRef.current || !cameraRef.current) {
+      if (
+        !rendererRef.current ||
+        !sceneRef.current ||
+        !cameraRef.current ||
+        !overlaySceneRef.current ||
+        !overlayCameraRef.current
+      ) {
         console.warn("[ParticleSystem] Missing required references");
         return;
       }
 
       frameIdRef.current = requestAnimationFrame(animate);
+
+      // 스크롤에 따른 카메라 Z 위치 업데이트 (원근 효과)
+      const scrollEffectFactor = 0.01;
+      cameraRef.current.position.z =
+        initialCameraZ.current + scrollYRef.current * scrollEffectFactor;
 
       const currentTime = performance.now();
       const deltaTime = Math.min(
@@ -207,6 +225,13 @@ const ParticleSystem = ({
       });
 
       positionAttribute.needsUpdate = true;
+
+      // 잔상 효과 렌더링
+      rendererRef.current.render(
+        overlaySceneRef.current,
+        overlayCameraRef.current
+      );
+      // 메인 씬 렌더링
       rendererRef.current.render(sceneRef.current, cameraRef.current);
     } catch (error) {
       console.error("[ParticleSystem] Animation error:", error);
@@ -248,7 +273,17 @@ const ParticleSystem = ({
       sceneRef.current = null;
     }
 
+    if (overlaySceneRef.current) {
+      overlaySceneRef.current.clear();
+      overlaySceneRef.current = null;
+    }
+    if (overlayMaterialRef.current) {
+      overlayMaterialRef.current.dispose();
+      overlayMaterialRef.current = null;
+    }
+
     cameraRef.current = null;
+    overlayCameraRef.current = null;
     isInitializedRef.current = false;
   }, []);
 
@@ -258,7 +293,7 @@ const ParticleSystem = ({
 
     // Scene 설정
     const scene = new Scene();
-    scene.background = new Color(theme === "dark" ? "#000000" : "#ffffff");
+    // scene.background는 이제 사용하지 않음
     sceneRef.current = scene;
 
     // Camera 설정
@@ -282,8 +317,9 @@ const ParticleSystem = ({
       alpha: true,
       antialias: true,
       powerPreference: "high-performance",
+      preserveDrawingBuffer: true, // 잔상 효과를 위해 필요
     });
-    renderer.setClearColor(theme === "dark" ? "#000000" : "#ffffff");
+    renderer.autoClear = false; // 수동으로 화면을 제어
     renderer.setSize(
       containerRef.current.clientWidth,
       containerRef.current.clientHeight
@@ -291,6 +327,22 @@ const ParticleSystem = ({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
+
+    // 잔상 효과를 위한 오버레이 씬 설정
+    const overlayScene = new Scene();
+    const overlayCamera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    const overlayMaterial = new MeshBasicMaterial({
+      color: theme === "dark" ? 0x000000 : 0xffffff,
+      transparent: true,
+      opacity: theme === "dark" ? 0.4 : 0.1, // 다크모드에서 잔상 강도 조절
+      depthTest: false,
+      depthWrite: false,
+    });
+    const overlayQuad = new Mesh(new PlaneGeometry(2, 2), overlayMaterial);
+    overlayScene.add(overlayQuad);
+    overlaySceneRef.current = overlayScene;
+    overlayCameraRef.current = overlayCamera;
+    overlayMaterialRef.current = overlayMaterial;
 
     // 파티클 텍스처 생성
     const particleTexture = new Texture(createParticleTexture());
@@ -304,14 +356,36 @@ const ParticleSystem = ({
       sizeAttenuation: true,
       map: particleTexture,
       transparent: true,
-      blending: theme === "dark" ? AdditiveBlending : NormalBlending,
       depthWrite: false,
-      opacity: theme === "dark" ? 1 : 0.8,
     });
+
+    if (theme === "dark") {
+      material.blending = CustomBlending;
+      material.blendEquation = AddEquation;
+      material.blendSrc = SrcAlphaFactor;
+      material.blendDst = OneFactor;
+    } else {
+      material.blending = NormalBlending;
+    }
+
+    material.onBeforeCompile = (shader) => {
+      shader.vertexShader =
+        "attribute float alpha;\nvarying float vAlpha;\n" + shader.vertexShader;
+      shader.vertexShader = shader.vertexShader.replace(
+        "void main() {",
+        "void main() {\nvAlpha = alpha;"
+      );
+      shader.fragmentShader = "varying float vAlpha;\n" + shader.fragmentShader;
+      shader.fragmentShader = shader.fragmentShader.replace(
+        "gl_FragColor = vec4( outgoingLight, diffuseColor.a );",
+        "gl_FragColor = vec4( outgoingLight, diffuseColor.a * vAlpha );"
+      );
+    };
 
     // 파티클 데이터 설정
     const positions = positionsRef.current;
     const colors = colorsRef.current;
+    const opacities = opacitiesRef.current;
 
     particles.forEach((particle, i) => {
       const i3 = i * 3;
@@ -323,10 +397,13 @@ const ParticleSystem = ({
       colors[i3] = color.r;
       colors[i3 + 1] = color.g;
       colors[i3 + 2] = color.b;
+
+      opacities[i] = particle.opacity || 1.0;
     });
 
     geometry.setAttribute("position", new BufferAttribute(positions, 3));
     geometry.setAttribute("color", new BufferAttribute(colors, 3));
+    geometry.setAttribute("alpha", new BufferAttribute(opacities, 1));
     geometry.computeBoundingSphere();
 
     const points = new Points(geometry, material);
@@ -365,31 +442,45 @@ const ParticleSystem = ({
 
   // 테마 변경 시 배경색 업데이트
   useEffect(() => {
-    if (sceneRef.current && rendererRef.current && materialRef.current) {
-      const bgColor = theme === "dark" ? "#000000" : "#ffffff";
-      sceneRef.current.background = new Color(bgColor);
-      rendererRef.current.setClearColor(bgColor);
-
-      // 블렌딩 모드와 투명도 업데이트
-      materialRef.current.blending =
-        theme === "dark" ? AdditiveBlending : NormalBlending;
-      materialRef.current.opacity = theme === "dark" ? 1 : 0.8;
+    if (overlayMaterialRef.current) {
+      overlayMaterialRef.current.color.set(
+        theme === "dark" ? 0x000000 : 0xffffff
+      );
+      overlayMaterialRef.current.opacity = theme === "dark" ? 0.4 : 0.1;
+    }
+    if (materialRef.current) {
+      if (theme === "dark") {
+        materialRef.current.blending = CustomBlending;
+        materialRef.current.blendEquation = AddEquation;
+        materialRef.current.blendSrc = SrcAlphaFactor;
+        materialRef.current.blendDst = OneFactor;
+      } else {
+        materialRef.current.blending = NormalBlending;
+      }
       materialRef.current.needsUpdate = true;
+    }
 
+    if (sceneRef.current && rendererRef.current) {
       // 파티클 색상 업데이트
       const colors = colorsRef.current;
+      const opacities = opacitiesRef.current;
       particles.forEach((particle, i) => {
         const i3 = i * 3;
         const color = new Color(particle.color);
         colors[i3] = color.r;
         colors[i3 + 1] = color.g;
         colors[i3 + 2] = color.b;
+        opacities[i] = particle.opacity || 1.0;
       });
 
       if (geometryRef.current) {
         const colorAttribute = geometryRef.current.getAttribute("color");
         if (colorAttribute) {
           colorAttribute.needsUpdate = true;
+        }
+        const alphaAttribute = geometryRef.current.getAttribute("alpha");
+        if (alphaAttribute) {
+          alphaAttribute.needsUpdate = true;
         }
       }
     }

@@ -518,27 +518,67 @@ export function createParticleTexture(): HTMLCanvasElement {
   const context = canvas.getContext("2d")!;
   const centerX = size / 2;
   const centerY = size / 2;
+  const radius = size / 2;
 
   // 배경을 투명하게 설정
   context.clearRect(0, 0, size, size);
 
-  // 3-5개의 랜덤한 원을 그려서 비정형 모양 생성
-  const numCircles = Math.floor(Math.random() * 3) + 3;
+  // 부드러운 원형 그라디언트 생성
+  const gradient = context.createRadialGradient(
+    centerX,
+    centerY,
+    0,
+    centerX,
+    centerY,
+    radius
+  );
+  gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+  gradient.addColorStop(0.5, "rgba(255, 255, 255, 0.7)");
+  gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
 
-  for (let i = 0; i < numCircles; i++) {
-    // 랜덤한 위치와 크기
-    const offsetX = (Math.random() - 0.5) * size * 0.3;
-    const offsetY = (Math.random() - 0.5) * size * 0.3;
-    const radius = (Math.random() * 0.3 + 0.2) * size;
-
-    // 랜덤한 투명도
-    const alpha = Math.random() * 0.4 + 0.6;
-
-    context.beginPath();
-    context.arc(centerX + offsetX, centerY + offsetY, radius, 0, Math.PI * 2);
-    context.fillStyle = `rgba(255, 255, 255, ${alpha})`;
-    context.fill();
-  }
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, size, size);
 
   return canvas;
+}
+
+export function generateBackgroundParticles(
+  count: number,
+  theme: "light" | "dark" | string = "dark"
+): ParticleData[] {
+  const particles: ParticleData[] = [];
+  const rangeX = 15; // 범위를 30 -> 15로 줄여 밀집도 증가
+  const rangeY = 15; // 범위를 30 -> 15로 줄여 밀집도 증가
+  const rangeZ = 10;
+
+  const colors =
+    theme === "light"
+      ? ["#cccccc", "#bbbbbb", "#aaaaaa"] // 라이트 모드용 연한 회색
+      : ["#444444", "#666666", "#888888"]; // 다크 모드용 기존 색상
+
+  for (let i = 0; i < count; i++) {
+    const position = new Vector3(
+      (Math.random() - 0.5) * rangeX,
+      (Math.random() - 0.5) * rangeY,
+      Math.random() * -rangeZ - 1
+    );
+
+    particles.push({
+      originalPosition: position.clone(),
+      currentPosition: position.clone(),
+      color: colors[
+        Math.floor(Math.random() * colors.length)
+      ] as unknown as number,
+      id: `bg-particle-${i}`,
+      size: Math.random() * 0.08 + 0.02,
+      opacity: Math.random() * 0.01 + 0.01,
+      mass: Math.random() * 1.5 + 0.5,
+      isActive: true,
+      effectScale: 2.5,
+      shape: "circle",
+      isFixed: false,
+      velocity: new Vector3(0, 0, 0),
+    });
+  }
+  return particles;
 }

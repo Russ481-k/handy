@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, use } from "react";
+import { useState } from "react";
 import { useTranslation } from "@/app/i18n/client";
 import {
   IoLocationOutline,
@@ -8,6 +8,7 @@ import {
   IoCallOutline,
 } from "react-icons/io5";
 import styles from "@/styles/modules/contact.module.scss";
+import { Hero } from "@/components/hero/Hero";
 
 interface FormData {
   name: string;
@@ -17,11 +18,10 @@ interface FormData {
 }
 
 export default function ContactPage({
-  params,
+  params: { lng },
 }: {
-  params: Promise<{ lng: string }>;
+  params: { lng: string };
 }) {
-  const { lng } = use(params);
   const { t } = useTranslation(lng, "common");
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -55,10 +55,10 @@ export default function ContactPage({
 
   return (
     <main className={styles.main}>
-      <section className={styles.hero}>
-        <h1>{t("contact_page.title")}</h1>
-        <p>{t("contact_page.subtitle")}</p>
-      </section>
+      <Hero
+        title={t("contact_page.title")}
+        description={t("contact_page.description")}
+      />
 
       <section className={styles.content}>
         <div className={styles.contactInfo}>

@@ -3,6 +3,7 @@ import { getTranslation } from "@/app/i18n/server";
 import { BaseProps } from "@/types/section";
 import { BlogSectionClient } from "@/components/blog/BlogSectionClient";
 import styles from "@/styles/modules/blog.module.scss";
+import { Hero } from "@/components/hero/Hero";
 
 export default async function BlogPage({
   params,
@@ -21,10 +22,7 @@ export default async function BlogPage({
 
   return (
     <div className={styles.container}>
-      <section className={styles.hero}>
-        <h1>{titles.title}</h1>
-        <p>{titles.description}</p>
-      </section>
+      <Hero title={t("blog.title")} description={t("blog.description")} />
       <div className={styles.content}>
         <BlogSectionClient posts={posts} titles={titles} />
       </div>

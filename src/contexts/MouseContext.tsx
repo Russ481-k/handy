@@ -8,6 +8,7 @@ import React, {
   useLayoutEffect,
   useMemo,
   useRef,
+  useEffect,
 } from "react";
 import { Vector3, PerspectiveCamera } from "three";
 import { MouseInteractionData } from "@/types/particle/index";
@@ -17,6 +18,7 @@ export type MouseContextType = {
   mouseData: MouseInteractionData;
   setMouseData: React.Dispatch<React.SetStateAction<MouseInteractionData>>;
   setCamera: (camera: PerspectiveCamera | null) => void;
+  scrollY: number;
 };
 
 const MouseContext = createContext<MouseContextType>({
@@ -31,6 +33,7 @@ const MouseContext = createContext<MouseContextType>({
   },
   setMouseData: () => {},
   setCamera: () => {},
+  scrollY: 0,
 });
 
 export const useMouseContext = () => useContext(MouseContext);
@@ -49,6 +52,7 @@ export function MouseContextProvider({
     swirl: true,
     momentum: 0.95,
   });
+  const [scrollY, setScrollY] = useState(0);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const cameraRef = useRef<PerspectiveCamera | null>(null);
@@ -58,6 +62,16 @@ export function MouseContextProvider({
 
   const setCamera = useCallback((camera: PerspectiveCamera | null) => {
     cameraRef.current = camera;
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   // 마우스 이벤트 핸들러
@@ -150,8 +164,9 @@ export function MouseContextProvider({
       mouseData,
       setMouseData,
       setCamera,
+      scrollY,
     }),
-    [mouseData, setCamera]
+    [mouseData, setCamera, scrollY]
   );
 
   return (
