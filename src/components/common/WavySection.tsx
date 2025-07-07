@@ -1,9 +1,10 @@
-import React from "react";
+import { ReactNode } from "react";
 import { Wave } from "./Wave";
 import styles from "@/styles/modules/wavy-section.module.scss";
+import { LazyRender } from "./LazyRender";
 
 interface WavySectionProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   contentClassName?: string;
 }
@@ -14,16 +15,19 @@ export const WavySection = ({
   contentClassName,
 }: WavySectionProps) => {
   return (
-    <section className={`${styles.section} ${className || ""}`}>
-      <div className={styles.waveTop}>
+    <section className={`${styles.wavySection} ${className || ""}`}>
+      <LazyRender height="10vh" className={styles.waveWrapper}>
         <Wave />
-      </div>
+      </LazyRender>
       <div className={`${styles.content} ${contentClassName || ""}`}>
         {children}
       </div>
-      <div className={styles.waveBottom}>
+      <LazyRender
+        height="10vh"
+        className={`${styles.waveWrapper} ${styles.waveBottom}`}
+      >
         <Wave />
-      </div>
+      </LazyRender>
     </section>
   );
 };

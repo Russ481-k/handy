@@ -10,6 +10,7 @@ import styles from "@/styles/modules/home.module.scss";
 import { Project as SectionProject } from "@/types/section";
 import { Project as ApiProject } from "@/types/project";
 import { WavySection } from "@/components/common/WavySection";
+import { Wave } from "@/components/common/Wave";
 
 interface HomePageProps {
   params: Promise<BaseProps>;
@@ -36,20 +37,20 @@ export default async function HomePage({ params }: HomePageProps) {
       <main className={styles.main}>
         <Hero title={t("hero.title")} description={t("hero.description")} />
         <div className={styles.content}>
-          <WavySection
+          {/* <WavySection
             className={styles.section}
             contentClassName={styles.container}
           >
-            <Features lng={lng} />
-          </WavySection>
-          <Teams lng={lng} />
-          <WavySection
+          </WavySection> */}
+          <Features lng={lng} /> <Wave />
+          <Teams lng={lng} /> <Wave />
+          {/* <WavySection
             className={styles.section}
             contentClassName={styles.container}
           >
-            {/* <ProjectSectionWrapper projects={projects} lng={lng} /> */}
-            <HomeBlogSectionWrapper posts={posts} lng={lng} />
-          </WavySection>
+          </WavySection> */}
+          {/* <ProjectSectionWrapper projects={projects} lng={lng} /> */}
+          <HomeBlogSectionWrapper posts={posts} lng={lng} />
         </div>
       </main>
     </div>

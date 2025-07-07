@@ -16,12 +16,20 @@
   height: 100%;
 }
 
-.parallax > use {
-  /* 2개의 애니메이션을 동시에 적용: 수평 이동(move-forever)과 수직 상호작용(interact-wave) */
-  animation-name: move-forever, interact-wave;
-  animation-timing-function: linear, ease-in-out; /* 수평은 등속, 수직은 리드미컬하게 */
+/* 각 g 요소(웨이브 라인)에 수평 이동 애니메이션 적용 */
+.parallax > g {
+  animation-name: move-forever;
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
+  animation-duration: 25s; /* 모든 라인에 동일한 속도 적용 */
+}
 
+/* 각 use 요소(웨이브 형태)에 수직 이동 애니메이션 적용 */
+.parallax > g > use {
+  animation-name: interact-wave;
+  animation-duration: 7s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
   stroke: url(#wave-gradient);
   stroke-width: 0.06px;
   vector-effect: non-scaling-stroke;
@@ -47,91 +55,18 @@
   }
 }
 
-/* 21개 라인의 다이나믹하고 '규칙적인' 애니메이션 설정 */
-/* 모든 라인의 수평 이동(animation-duration 첫번째 값) 속도를 25s로 통일하여 규칙성 유지 */
-.parallax > use:nth-child(1) {
-  animation-duration: 25s, 7s; /* 수평, 수직 애니메이션 시간 */
-  animation-delay: 0s, 0s; /* 수평, 수직 애니메이션 지연 */
-}
-.parallax > use:nth-child(2) {
-  animation-duration: 25s, 7s;
-  animation-delay: -0.5s, -0.2s;
-}
-.parallax > use:nth-child(3) {
-  animation-duration: 25s, 7s;
-  animation-delay: -1s, -0.4s;
-}
-.parallax > use:nth-child(4) {
-  animation-duration: 25s, 7s;
-  animation-delay: -1.5s, -0.6s;
-}
-.parallax > use:nth-child(5) {
-  animation-duration: 25s, 7s;
-  animation-delay: -2s, -0.8s;
-}
-.parallax > use:nth-child(6) {
-  animation-duration: 25s, 7s;
-  animation-delay: -2.5s, -1s;
-}
-.parallax > use:nth-child(7) {
-  animation-duration: 25s, 7s;
-  animation-delay: -3s, -1.2s;
-}
-.parallax > use:nth-child(8) {
-  animation-duration: 25s, 7s;
-  animation-delay: -3.5s, -1.4s;
-}
-.parallax > use:nth-child(9) {
-  animation-duration: 25s, 7s;
-  animation-delay: -4s, -1.6s;
-}
-.parallax > use:nth-child(10) {
-  animation-duration: 25s, 7s;
-  animation-delay: -4.5s, -1.8s;
-}
-.parallax > use:nth-child(11) {
-  animation-duration: 25s, 7s;
-  animation-delay: -5s, -2s;
-}
-.parallax > use:nth-child(12) {
-  animation-duration: 25s, 7s;
-  animation-delay: -5.5s, -2.2s;
-}
-.parallax > use:nth-child(13) {
-  animation-duration: 25s, 7s;
-  animation-delay: -6s, -2.4s;
-}
-.parallax > use:nth-child(14) {
-  animation-duration: 25s, 7s;
-  animation-delay: -6.5s, -2.6s;
-}
-.parallax > use:nth-child(15) {
-  animation-duration: 25s, 7s;
-  animation-delay: -7s, -2.8s;
-}
-.parallax > use:nth-child(16) {
-  animation-duration: 25s, 7s;
-  animation-delay: -7.5s, -3s;
-}
-.parallax > use:nth-child(17) {
-  animation-duration: 25s, 7s;
-  animation-delay: -8s, -3.2s;
-}
-.parallax > use:nth-child(18) {
-  animation-duration: 25s, 7s;
-  animation-delay: -8.5s, -3.4s;
-}
-.parallax > use:nth-child(19) {
-  animation-duration: 25s, 7s;
-  animation-delay: -9s, -3.6s;
-}
-.parallax > use:nth-child(20) {
-  animation-duration: 25s, 7s;
-  animation-delay: -9.5s, -3.8s;
-}
-.parallax > use:nth-child(21) {
-  animation-duration: 25s, 7s;
-  animation-delay: -10s, -4s;
+/* 
+  42개 라인의 애니메이션 지연(delay) 설정
+  - 수평 이동(g 태그)과 수직 이동(use 태그)에 각각 다른 delay를 적용하여 
+    일정한 간격을 유지하며, 리드미컬하게 움직이도록 함.
+*/
+@for $i from 1 through 42 {
+  .parallax > g:nth-child(#{$i}) {
+    animation-delay: #{-0.5 * ($i - 1)}s; /* 수평 이동 지연 */
+  }
+  .parallax > g:nth-child(#{$i}) > use {
+    animation-delay: #{-0.2 * ($i - 1)}s; /* 수직 이동 지연 */
+  }
 }
 
 @keyframes move-forever {
