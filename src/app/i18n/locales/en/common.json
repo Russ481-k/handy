@@ -27,7 +27,7 @@
     "title": "Our Team",
     "items": {
       "ceo": {
-        "name": "John Doe",
+        "name": "Jung-hyan Park",
         "role": "CEO",
         "description": "Visionary leader with 15+ years of experience",
         "image": "/team/ceo.jpg"
@@ -39,7 +39,7 @@
         "image": "/team/cfo.jpg"
       },
       "cto": {
-        "name": "Mike Johnson",
+        "name": "Su-bin Yoon",
         "role": "CTO",
         "description": "Tech innovator with deep engineering background",
         "image": "/team/cto.jpg"

@@ -23,7 +23,7 @@ export default function TranslatedHeader({ lng }: { lng: string }) {
     setNavigation([
       { name: t("navigation.home"), href: `/${lng}` },
       { name: t("navigation.about"), href: `/${lng}/about` },
-      { name: t("navigation.projects"), href: `/${lng}/projects` },
+      // { name: t("navigation.projects"), href: `/${lng}/projects` },
       { name: t("navigation.blog"), href: `/${lng}/blog` },
       { name: t("navigation.contact"), href: `/${lng}/contact` },
     ]);

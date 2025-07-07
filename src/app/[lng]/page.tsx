@@ -47,9 +47,9 @@ export default async function HomePage({ params }: HomePageProps) {
             className={styles.section}
             contentClassName={styles.container}
           >
-            <ProjectSectionWrapper projects={projects} lng={lng} />
+            {/* <ProjectSectionWrapper projects={projects} lng={lng} /> */}
+            <HomeBlogSectionWrapper posts={posts} lng={lng} />
           </WavySection>
-          <HomeBlogSectionWrapper posts={posts} lng={lng} />
         </div>
       </main>
     </div>

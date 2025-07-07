@@ -27,7 +27,7 @@
     "title": "우리 팀",
     "items": {
       "ceo": {
-        "name": "홍길동",
+        "name": "박정현",
         "role": "대표이사",
         "description": "15년 이상의 경험을 가진 비전 있는 리더",
         "image": "/team/ceo.jpg"
@@ -39,8 +39,8 @@
         "image": "/team/cfo.jpg"
       },
       "cto": {
-        "name": "이기술",
-        "role": "기술이사",
+        "name": "윤수빈",
+        "role": "CTO",
         "description": "깊은 엔지니어링 배경을 가진 기술 혁신가",
         "image": "/team/cto.jpg"
       }
@@ -52,7 +52,7 @@
     "view_all": "전체 프로젝트 보기"
   },
   "blog": {
-    "title": "최신 블로그 포스트",
+    "title": "아이디어에서 혁신까지, 우리의 기술 이야기",
     "description": "최신 기술 동향과 개발 이야기를 공유합니다",
     "view_all": "전체 포스트 보기"
   },
