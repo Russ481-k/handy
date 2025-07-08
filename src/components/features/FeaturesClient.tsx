@@ -10,7 +10,7 @@ import {
   IoShieldCheckmarkOutline,
   IoPeopleOutline,
 } from "react-icons/io5";
-import { WavySection } from "../common/WavySection";
+import { Wave } from "../common/Wave";
 
 interface FeaturesClientProps {
   features: Feature[];
@@ -62,6 +62,7 @@ export function FeaturesClient({ features, title }: FeaturesClientProps) {
             ))}
         </motion.div>
       </div>
+      <Wave />
     </section>
   );
 }

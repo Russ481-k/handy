@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { BlogPost } from "@/types/blog";
 import styles from "@/styles/modules/blog.module.scss";
 import { BlogCard } from "./BlogCard";
+import { Wave } from "../common/Wave";
 
 interface BlogSectionClientProps {
   posts: BlogPost[];

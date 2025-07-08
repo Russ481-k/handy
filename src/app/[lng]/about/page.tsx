@@ -2,18 +2,12 @@
 
 import styles from "@/styles/modules/about.module.scss";
 import { useTranslation } from "@/app/i18n/client";
-import {
-  IoRocketOutline,
-  IoShieldCheckmarkOutline,
-  IoPeopleOutline,
-} from "react-icons/io5";
+
 import type { CustomTypeOptions } from "@/app/i18n/types";
-import { ReactElement } from "react";
-import { ValueItem } from "@/types/section";
 import { Hero } from "@/components/hero/Hero";
 import { Features } from "@/components/features/Features";
 import { Feature } from "@/types/section";
-import { WavySection } from "@/components/common/WavySection";
+import { Wave } from "@/components/common/Wave";
 
 type HistoryItem =
   CustomTypeOptions["resources"]["common"]["about_page"]["history"]["items"][number];
@@ -58,32 +52,28 @@ export default async function AboutPage({ params }: AboutPageProps) {
         title={t("about_page.title")}
         description={t("about_page.subtitle")}
       />
-      <WavySection
-        className={styles.waveTop}
-        contentClassName={styles.container}
-      >
-        <section className={styles.history}>
-          <h2>{t("about_page.history.title")}</h2>
-          <div className={styles.timeline}>
-            {historyItems.map((item, index) => (
-              <div key={index} className={styles.timelineItem}>
-                <div className={styles.year}>{item.year}</div>
-                <div className={styles.content}>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
+      <section className={styles.history}>
+        <Wave />
+        <h2>{t("about_page.history.title")}</h2>
+        <div className={styles.timeline}>
+          {historyItems.map((item, index) => (
+            <div key={index} className={styles.timelineItem}>
+              <div className={styles.year}>{item.year}</div>
+              <div className={styles.content}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          ))}
+        </div>
+      </section>
 
-        {/* 기존 'values' 섹션을 Features 컴포넌트로 대체 */}
-        <Features
-          lng={lng}
-          title={t("about_page.values.title")}
-          features={features}
-        />
-      </WavySection>
+      {/* 기존 'values' 섹션을 Features 컴포넌트로 대체 */}
+      <Features
+        lng={lng}
+        title={t("about_page.values.title")}
+        features={features}
+      />
     </main>
   );
 }
