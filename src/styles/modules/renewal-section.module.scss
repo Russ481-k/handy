@@ -1,0 +1,59 @@
+@import "@/styles/mixins.scss";
+
+.renewalContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  .content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    mix-blend-mode: difference;
+    width: 100%;
+  }
+
+  .title {
+    font-size: clamp(2.5rem, 9vw, 20rem);
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+    color: #fff;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subtitle {
+    font-size: clamp(1rem, 4vw, 8rem);
+    font-weight: 400;
+    margin: 1.5rem auto 0;
+    color: #eee;
+    width: 90%;
+  }
+}
+
+[data-theme="light"] {
+  .renewalContainer {
+    background-color: #fff;
+    color: #000;
+
+    .title {
+      color: #000;
+    }
+
+    .subtitle {
+      color: #000;
+    }
+  }
+} 

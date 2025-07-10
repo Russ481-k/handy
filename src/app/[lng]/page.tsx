@@ -10,6 +10,7 @@ import styles from "@/styles/modules/home.module.scss";
 import { Project as SectionProject } from "@/types/section";
 import { Project as ApiProject } from "@/types/project";
 import { Wave } from "@/components/common/Wave";
+import { RenewalSection } from "@/components/renewal/RenewalSection";
 
 interface HomePageProps {
   params: Promise<BaseProps>;
@@ -38,10 +39,11 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className={styles.content}>
           <Wave />
           <Features lng={lng} />
-          <Teams lng={lng} />
+          <RenewalSection lng={lng} />
           <Wave />
+          {/* <Teams lng={lng} /> */}
           {/* <ProjectSectionWrapper projects={projects} lng={lng} /> */}
-          <HomeBlogSectionWrapper posts={posts} lng={lng} />
+          {/* <HomeBlogSectionWrapper posts={posts} lng={lng} /> */}
         </div>
       </main>
     </div>

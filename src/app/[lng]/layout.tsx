@@ -5,6 +5,9 @@ import TranslatedHeader from "@/components/header/TranslatedHeader";
 import Footer from "@/components/footer/Footer";
 import FloatingButtons from "@/components/common/FloatingButtons";
 import { dir } from "i18next";
+import { Providers } from "../providers";
+import { CustomCursor } from "@/components/common/CustomCursor";
+import { CursorProvider } from "@/contexts/CursorContext";
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -24,11 +27,16 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <div className={styles.wrapper}>
-          <TranslatedHeader lng={lng} />
-          <main className={styles.main}>{children}</main>
-          <Footer lng={lng} />
+          <Providers>
+            <CursorProvider>
+              <CustomCursor />
+              {/* <TranslatedHeader lng={lng} /> */}
+              <main className={styles.main}>{children}</main>
+              <Footer lng={lng} />
+            </CursorProvider>
+          </Providers>
+          <FloatingButtons />
         </div>
-        <FloatingButtons />
       </div>
     </MouseContextProvider>
   );
