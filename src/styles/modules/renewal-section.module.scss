@@ -48,12 +48,16 @@
     background-color: #fff;
     color: #000;
 
+    .content {
+      mix-blend-mode: normal !important;
+    }
+
     .title {
-      color: #000;
+      color: black !important;
     }
 
     .subtitle {
-      color: #000;
+      color: black !important;
     }
   }
 } 
