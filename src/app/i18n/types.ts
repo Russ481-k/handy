@@ -232,6 +232,10 @@ interface CommonResources {
       };
     };
   };
+  renewal: {
+    title: string;
+    subtitle: string;
+  };
 }
 
 declare module "i18next" {

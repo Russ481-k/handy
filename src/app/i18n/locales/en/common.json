@@ -316,5 +316,9 @@
       "title": "Termination",
       "content": "Information about contract termination..."
     }
+  },
+  "renewal": {
+    "title": "Pardon our pixels.",
+    "subtitle": "Back soon in a brand-new outfit!"
   }
 }

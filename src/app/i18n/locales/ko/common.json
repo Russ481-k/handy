@@ -307,5 +307,9 @@
       "title": "계약 종료",
       "content": "계약 종료에 대한 정보..."
     }
+  },
+  "renewal": {
+    "title": "Pardon our pixels.",
+    "subtitle": "Back soon in a brand-new outfit!"
   }
 }
